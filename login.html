@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunday Quiet | Login</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------------------------
+      🎨 Sunday Quiet - 顏色 & 字體統一說明
+    ------------------------------------------
+      主背景：#F7F5F0（Cream）
+      卡片背景：#FDFDFC（Light Cream）
+      主字色：#4A4A4A 深灰
+      次字色：#A09486 奶茶灰
+      重點字：#4A3F35 咖啡深色
+
+      邊框：
+      - 奶油灰 #C9C1B5
+      - 柔灰   #D6CEC3
+
+      按鈕：
+      - 主按鈕底：#F2EEE9
+      - hover：#E8E2D8
+    -------------------------------------------*/
+
+    body {
+      height: 100vh;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #F7F5F0;
+      color: #4A4A4A;
+    }
+
+    .row {
+      height: 100vh;
+    }
+
+    /* 色票 */
+    .text-main {
+      color: #4A4A4A;
+    }
+
+    .text-sub {
+      color: #A09486;
+    }
+
+    .text-warm {
+      color: #4A3F35;
+    }
+
+    .bg-lightcream {
+      background-color: #FDFDFC;
+    }
+
+    .border-cream {
+      border-color: #C9C1B5 !important;
+    }
+
+    .border-soft {
+      border-color: #D6CEC3 !important;
+    }
+
+    .bg-btn {
+      background-color: #F2EEE9;
+    }
+
+    .bg-btn-hover:hover {
+      background-color: #E8E2D8 !important;
+    }
+
+    .bg-warm {
+      background-color: #4A3F35;
+    }
+
+    /* 字級 */
+    .text-xs {
+      font-size: 11px;
+    }
+
+    .text-sm {
+      font-size: 14px;
+    }
+
+    .text-md {
+      font-size: 16px;
+    }
+
+    .logo {
+      min-width: 240px;
+      max-width: 360px;
+    }
+
+    .slogan-box {
+      max-width: 520px;
+      padding: 40px 32px;
+      border: 1px solid #D6CEC3;
+      background: rgba(253, 253, 252, 0.72);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .login-card {
+      width: min(520px, 92%);
+      border-radius: 22px;
+      border: 1px solid #D6CEC3;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      padding: 36px 26px;
+    }
+
+    .form-control {
+      border: 1px solid #C9C1B5;
+      background-color: #FDFDFC;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #4A4A4A;
+    }
+
+    .form-control:focus {
+      border-color: #A09486;
+      box-shadow: 0 0 0 0.2rem rgba(160, 148, 134, 0.18);
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid #C9C1B5;
+      background-color: #F2EEE9;
+      color: #4A3F35;
+      transition: 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background-color: #E8E2D8;
+      color: #4A3F35;
+    }
+
+    .btn-sq {
+      border: 1px solid #C9C1B5;
+      background-color: #F2EEE9;
+      color: #4A3F35;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .btn-sq:hover {
+      background-color: #E8E2D8 !important;
+      color: #4A3F35;
+    }
+
+    .link-sq {
+      color: #A09486;
+      text-decoration: none;
+    }
+
+    .link-sq:hover {
+      color: #4A3F35;
+      text-decoration: underline;
+    }
+
+    .abc {
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%);
+      gap: 14px !important;
+    }
+
+    @media (min-width: 992px) {
+      .abc {
+        left: 25%;
+        transform: translateX(-25%);
+      }
+    }
+
+    .footer-social {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid #D6CEC3;
+      background-color: rgba(253, 253, 252, 0.78);
+      backdrop-filter: blur(4px);
+      color: #4A3F35;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .footer-social:hover {
+      background-color: #E8E2D8;
+      color: #4A3F35;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container-fluid position-relative">
+    <div class="row">
+
+      <!-- 左側文案（lg 才顯示） -->
+      <div class="col d-none d-lg-flex flex-column align-items-center justify-content-center">
+        <div class="slogan-box">
+          <h2 class="fw-bold text-warm mb-2">Scented moments for a calmer day.</h2>
+          <div class="text-sub fs-5">Soft light, quiet breath, slower living.</div>
+          <div class="text-main text-sm mt-3">
+            Welcome back—let’s make today feel a little softer ☁️
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側登入 -->
+      <div class="col d-flex flex-column align-items-center justify-content-center px-2">
+        <div class="login-card bg-lightcream">
+          <div class="text-center">
+            <img src="./img/logo.png" class="logo w-50 mb-3" alt="logo">
+            <div class="text-sub mb-3">Sign in to continue</div>
+          </div>
+
+          <div class="d-flex justify-content-center mb-4">
+            <a href="" class="social-btn mx-2" aria-label="facebook"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="" class="social-btn mx-2" aria-label="google"><i class="bi bi-google fs-5"></i></a>
+            <a href="" class="social-btn mx-2" aria-label="twitter"><i class="bi bi-twitter fs-5"></i></a>
+          </div>
+
+          <div class="text-center text-sub text-sm mb-3">or sign in with your email</div>
+
+          <div class="d-flex flex-column w-100">
+            <input type="email" class="form-control mb-3" placeholder="name@example.com">
+            <input type="password" class="form-control mb-2" placeholder="Password">
+
+            <div class="d-flex justify-content-end mb-3">
+              <a href="" class="link-sq text-sm">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-sq fw-bold fs-5 w-100">Log in</button>
+
+            <div class="text-center text-sub text-sm mt-3">
+              New here?
+              <a href="" class="link-sq fw-semibold">Create an account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="position-absolute abc d-flex">
+      <a href="" class="footer-social" aria-label="facebook"><i class="bi bi-facebook fs-5"></i></a>
+      <a href="" class="footer-social" aria-label="messenger"><i class="bi bi-messenger fs-5"></i></a>
+      <a href="" class="footer-social" aria-label="instagram"><i class="bi bi-instagram fs-5"></i></a>
+    </div>
+  </section>
+</body>
+
+</html>
