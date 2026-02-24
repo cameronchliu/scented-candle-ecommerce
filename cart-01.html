@@ -443,7 +443,7 @@
     </script> -->
 
     <!-- 把在index.html選購的商品加進來並顯示，並給每一個商品加上 total=[1]，最後篩選出來，產生新陣列。-->
-    <script>
+    <!-- <script>
 
         // 1. 抓取在application的資料
         // 全部商品
@@ -520,6 +520,81 @@
             `
         });
         // --------------------- -------------------------------- -------------------
+    </script> -->
+    <script>
+        // 1) 讀商品資料庫（只是用來補資料，沒有也沒關係）
+        const shoppingData = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+        // 2) 讀 cart（唯一真相）
+        const savedCart = JSON.parse(localStorage.getItem('cart')) || { items: [], shipping: 60 };
+
+        // 3) 產生 nowshopping：以 cart.items 為主
+        //    如果 cart 裡有 img/tag/price 就直接用
+        //    如果沒有，就去 shoppingList 補上（避免壞掉）
+        let nowshopping = (savedCart.items || []).map(ci => {
+            const full = shoppingData.find(p => p.title === ci.title);
+
+            return {
+                title: ci.title,
+                price: Number(ci.price ?? full?.price ?? 0),
+                img: ci.img ?? full?.img ?? '',
+                tag: ci.tag ?? full?.tag ?? '',
+                total: Number(ci.qty ?? 1) // 你畫面用 total，我們就對應 qty
+            };
+        });
+
+        // --------------------- render -------------------
+        const shoppingListEl = document.querySelector('#shopping-list');
+        shoppingListEl.innerHTML = '';
+
+        // 如果購物車是空的，顯示提示
+        if (nowshopping.length === 0) {
+            shoppingListEl.innerHTML = `
+      <div class="text-center text-sub py-5">
+        購物車目前是空的喔 🛒
+      </div>
+    `;
+        } else {
+            nowshopping.forEach(item => {
+                shoppingListEl.innerHTML += `
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex gap-3 gap-md-5">
+            <img class="circle rounded-circle" src="${item.img}">
+            <div>
+              <div class="fw-semibold text-main mb-1">${item.title}</div>
+              <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
+              <div class="text-xs text-sub">容量：200g</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="input-group mx-3" style="width:120px;">
+              <button class="btn btn-click" data-calculate="-1">-</button>
+              <input type="text" class="form-control text-center" value="${item.total}" data-shoppingname="${item.title}">
+              <button class="btn btn-click" data-calculate="1">+</button>
+            </div>
+            <div class="text-main">💲 ${Number(item.price).toLocaleString()}</div>
+          </div>
+        </div>
+        <hr>
+      `;
+            });
+        }
+
+        document.querySelectorAll('input[data-shoppingname]').forEach(input => {
+            input.addEventListener('change', () => {
+                const title = input.dataset.shoppingname;
+                let qty = parseInt(input.value, 10);
+                if (isNaN(qty) || qty < 1) qty = 1;
+                input.value = qty;
+
+                const item = nowshopping.find(p => p.title === title);
+                if (!item) return;
+
+                item.total = qty;
+                CalculatePrice();
+            });
+        });
     </script>
 
     <!-- 讓每個商品按下-跟+之後，數量會動 -->
@@ -650,20 +725,33 @@
                 item.parentNode.children[1].value = cal;
 
                 // 找到陣列裡的資料進行更新
-                nowshopping.forEach(changeItem => {
-                    if (changeItem.title === item.parentNode.children[1].dataset.shoppingname) {
-                        changeItem['total'] = cal;
+                // nowshopping.forEach(changeItem => {
+                //     if (changeItem.title === item.parentNode.children[1].dataset.shoppingname) {
+                //         changeItem['total'] = cal;
 
-                        orginPrice = parseFloat(changeItem.price);
-                    }
-                    const price = orginPrice * cal;
+                //         orginPrice = parseFloat(changeItem.price);
+                //     }
+                //     const price = orginPrice * cal;
 
-                    item.parentNode.nextElementSibling.innerHTML =
-                        `💲${price.toLocaleString()}`;
+                //     item.parentNode.nextElementSibling.innerHTML =
+                //         `💲${price.toLocaleString()}`;
 
-                    CalculatePrice(); //執行計算
+                //     CalculatePrice(); //執行計算
 
-                });
+                // });
+
+                const title = item.parentNode.children[1].dataset.shoppingname;
+
+                // 找到被點擊的那個商品
+                const changeItem = nowshopping.find(p => p.title === title);
+                if (!changeItem) return;
+
+                changeItem.total = cal;
+
+                const price = Number(changeItem.price) * cal;
+                item.parentNode.nextElementSibling.innerHTML = `💲${price.toLocaleString()}`;
+
+                CalculatePrice(); // 只算一次就好
             });
         });
 
@@ -697,12 +785,12 @@
             // 數量的計算
             nowshopping.forEach(changeItem => {
                 SPCount += changeItem.total;   //數量的計算
-                SPSum += changeItem.total * changeItem.price  // 金額的計算
+                SPSum += Number(changeItem.total) * Number(changeItem.price);  // 金額的計算
             })
 
             // 先取得運費資料
             // 先裝一個變數後再處理資料
-            SPTax = parseFloat(String(shoppingTax.innerHTML).replace('$', ''))
+            let SPTax = parseFloat(String(shoppingTax.innerHTML).replace('$', ''))
 
             // 總計
             // console.log(SPSum + SPTax);

@@ -1010,22 +1010,51 @@
     let shoppingBtns = document.querySelectorAll('.shopping-btn');
     let shopping = [];
 
-    shoppingBtns.forEach(item => {
-      // 每次點擊【加入購物車】按鈕時
-      item.addEventListener('click', function () {
-        // 先判斷是否重複點擊同個商品，！意思是如果沒有的話
-        if (!shopping.includes(item.dataset.shoppingname)) {
-          // 就把這商品用 push 新增進去陣列中
-          shopping.push(item.dataset.shoppingname);
-        };
+shoppingBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
 
-        // 重新把更新過的shopping陣列轉JSON檔後塞進抽屜
-        localStorage.setItem('shopping', JSON.stringify(shopping));
-      })
-      // 按鈕點擊事件結束
+    const title = btn.dataset.shoppingname;
 
-    })
+    // 1️⃣ 取得 cart
+    const cart = getCart();
 
+    // 2️⃣ 找商品資料（從 shoppingList）
+    const product = shoppingList.find(item => item.title === title);
+
+    // 3️⃣ 看購物車裡有沒有
+    const existingItem = cart.items.find(item => item.title === title);
+
+    if (existingItem) {
+      // 已存在 → 數量 +1
+      existingItem.qty += 1;
+    } else {
+      // 第一次加入
+      cart.items.push({
+        title: product.title,
+        price: Number(product.price),
+        img: product.img,
+        tag: product.tag,
+        qty: 1
+      });
+    }
+
+    // 4️⃣ 存回 cart
+    saveCart(cart);
+
+    console.log('目前 cart：', cart);
+  });
+});
+
+    // 定義「cart 的初始結構」
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || {
+        items: []
+      };
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
 
   </script>
