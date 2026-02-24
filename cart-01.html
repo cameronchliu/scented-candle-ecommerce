@@ -450,26 +450,45 @@
         let shoppingData = JSON.parse(localStorage.getItem('shoppingList'));
         // 點選加入購物車的商品(只有title)
         let shopping = JSON.parse(localStorage.getItem('shopping'));
+        // 先讀取 cart（如果有）
+        const savedCart = JSON.parse(localStorage.getItem('cart'));
 
         // 2. 從「全部商品(shoppingData)」中
         //    篩選出「有被加入購物車(shopping)」的商品
         //    組成新的陣列 nowshopping
-        let nowshopping =
-            shoppingData.filter(item => {
+        // let nowshopping =
+        //     shoppingData.filter(item => {
 
-                // 看起來是將『每個』項目（含未加購）新增tatal物件
-                // 之後 filter 會跑過每一個 item
-                // 但最後留下來的 只有被加入購物車的商品
-                // 未加購的商品 雖然被加過 total，但最後不在 nowshopping 裡
-                // 而 shoppingData 裡面的資料本身也會跟著變化
-                item['total'] = 1;
+        //         // 看起來是將『每個』項目（含未加購）新增tatal物件
+        //         // 之後 filter 會跑過每一個 item
+        //         // 但最後留下來的 只有被加入購物車的商品
+        //         // 未加購的商品 雖然被加過 total，但最後不在 nowshopping 裡
+        //         // 而 shoppingData 裡面的資料本身也會跟著變化
+        //         item['total'] = 1;
 
-                // 如果shopping陣列中包含當前的商品(item)，就回傳這個商品的物件
-                if (shopping.includes(item.title)) {
-                    return item;
-                }
+        //         // 如果shopping陣列中包含當前的商品(item)，就回傳這個商品的物件
+        //         if (shopping.includes(item.title)) {
+        //             return item;
+        //         }
 
-            })
+        //     })
+        
+        // 建立 nowshopping（cart 是唯一真相）
+        let nowshopping = shoppingData
+            .filter(item => shopping.includes(item.title))   // 只留下有加入購物車的商品
+            .map(item => {
+                // 從 cart 裡找有沒有這個商品
+                const cartItem = savedCart?.items.find(
+                    i => i.title === item.title
+                );
+
+                return {
+                    ...item,
+                    // 如果 cart 裡有這個商品，用 cart 的 qty
+                    // 沒有的話（第一次進購物車），預設 1
+                    total: cartItem ? cartItem.qty : 1
+                };
+            });
 
 
         // --------------------- 把資料用forEach + innerHTML建立出來 -------------------
@@ -660,6 +679,7 @@
         // 總而言之言而總之就是超級麻煩。超級。
 
 
+
         // 之後要讓價格可以重計算 => 包成一個方法
         function CalculatePrice() {
 
@@ -691,9 +711,33 @@
             shoppingCount.innerHTML = SPCount;
             shoppingSum.innerHTML = `$${SPSum.toLocaleString()}`;
             shoppingTotal.innerHTML = `$${(SPSum + SPTax).toLocaleString()}`;
+
+            // 存最新狀態
+            saveCart();
         }
 
+        // 把現在 nowshopping 的每個商品（含數量）存進 localStorage.cart
+        function saveCart() {
+            const shippingText = document.querySelector('#shopping-tax')?.innerHTML || '$0';
+            const shipping = Number(String(shippingText).replace('$', '').replace(',', ''));
+
+            const cart = {
+                items: nowshopping.map(i => ({
+                    title: i.title,
+                    price: Number(i.price),
+                    qty: Number(i.total),
+                    img: i.img,
+                    tag: i.tag
+                })),
+                shipping
+            };
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+
         CalculatePrice(); //執行計算
+
 
     </script>
 </body>

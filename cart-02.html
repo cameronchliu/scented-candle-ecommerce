@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
         rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <style>
         /* ------------------------------------------
@@ -72,7 +74,8 @@
         }
 
         .bg-warm {
-            background-color: #4A3F35;;
+            background-color: #4A3F35;
+            ;
         }
 
         /* 字級 */
@@ -151,47 +154,48 @@
             width: calc(100% - 2 * 20px - 8px * 2);
             height: 10px;
         }
-
     </style>
 </head>
 
 <body>
-  <!--🔹nav導覽列🔹 -->
-  <nav class="navbar navbar-expand-lg bg-lightcream">
-    <div class="container">
-      <a class="navbar-brand" href="./index.html">
-        <img src="./img/logo.png" alt="Bootstrap" width="60" height="60">
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-main">
-          <li class="nav-item me-3"><a class="nav-link" href="#">商店</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">香氛系列</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">品牌故事</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">聯絡我們</a></li>
-          <li class="nav-item me-2"><a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a></li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i>
+    <!--🔹nav導覽列🔹 -->
+    <nav class="navbar navbar-expand-lg bg-lightcream">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./img/logo.png" alt="Bootstrap" width="60" height="60">
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./login.html">Login</a></li>
-              <li><a class="dropdown-item" href="#">Sign up</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Help</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-main">
+                    <li class="nav-item me-3"><a class="nav-link" href="#">商店</a></li>
+                    <li class="nav-item me-3"><a class="nav-link" href="#">香氛系列</a></li>
+                    <li class="nav-item me-3"><a class="nav-link" href="#">品牌故事</a></li>
+                    <li class="nav-item me-3"><a class="nav-link" href="#">聯絡我們</a></li>
+                    <li class="nav-item me-2"><a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="#">Sign up</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Help</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- 🔸 MAIN -->
     <main class="container bg-light px-5 my-4 shadow rounded">
         <!-- ⭐️ 進度條 -->
@@ -315,19 +319,19 @@
                     <tbody class="text-sm">
                         <tr>
                             <th class="text-sub fw-light">數量：</th>
-                            <td class="text-end">3</td>
+                            <td id="shopping-count" class="text-end">0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">小記：</th>
-                            <td class="text-end">$1,450</td>
+                            <td id="shopping-sum" class="text-end">$0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">運費：</th>
-                            <td class="text-end">$60</td>
+                            <td id="shopping-tax" class="text-end">$0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">總計：</th>
-                            <td class="text-end fw-bold">$1,510</td>
+                            <td id="shopping-total" class="text-end fw-bold">$0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -399,6 +403,28 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 1️⃣ 讀取 cart
+        const cart = JSON.parse(localStorage.getItem('cart')) || {
+            items: [],
+            shipping: 0
+        };
+
+        // 2️⃣ 計算數量、小計、總計
+        const count = cart.items.reduce((sum, item) => sum + item.qty, 0);
+        const subtotal = cart.items.reduce(
+            (sum, item) => sum + item.qty * item.price,
+            0
+        );
+        const shipping = cart.shipping;
+        const total = subtotal + shipping;
+
+        // 3️⃣ 顯示到畫面（整數 + 千分位）
+        document.querySelector('#shopping-count').innerText = count;
+        document.querySelector('#shopping-sum').innerText = `$${subtotal.toLocaleString()}`;
+        document.querySelector('#shopping-tax').innerText = `$${shipping.toLocaleString()}`;
+        document.querySelector('#shopping-total').innerText = `$${total.toLocaleString()}`;
+    </script>
 </body>
 
 </html>
