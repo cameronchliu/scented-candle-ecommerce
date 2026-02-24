@@ -637,8 +637,10 @@
 
                         orginPrice = parseFloat(changeItem.price);
                     }
+                    const price = orginPrice * cal;
 
-                    item.parentNode.nextElementSibling.innerHTML = `💲${String((orginPrice * cal).toFixed(2))}`;
+                    item.parentNode.nextElementSibling.innerHTML =
+                        `💲${price.toLocaleString()}`;
 
                     CalculatePrice(); //執行計算
 
@@ -687,9 +689,8 @@
 
             // 放回去對應的位置
             shoppingCount.innerHTML = SPCount;
-            shoppingSum.innerHTML = `$${SPSum}`;
-            shoppingTotal.innerHTML = `$${SPSum + SPTax}`;
-
+            shoppingSum.innerHTML = `$${SPSum.toLocaleString()}`;
+            shoppingTotal.innerHTML = `$${(SPSum + SPTax).toLocaleString()}`;
         }
 
         CalculatePrice(); //執行計算
