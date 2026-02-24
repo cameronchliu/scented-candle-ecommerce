@@ -267,61 +267,12 @@
         <!-- 🧾 訂單明細 -->
         <section>
             <h4 class="fw-bold mb-4">訂單明細</h4>
-            <!-- 🔸商品列表 -->
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex gap-5">
-                    <img class="circle rounded-circle" src="./img/CitrusDawn.png">
-                    <div>
-                        <div class="fw-semibold text-main mb-1">柑橘晨光 Citrus Dawn</div>
-                        <small class="text-sub">香調：<span class="fst-italic">柑橘 / 葡萄柚 / 白花</span></small>
-                        <div class="text-xs text-sub">容量：200g</div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center justify-content-between" style="min-width:100px;">
-                    <div class="text-main">x1</div>
-                    <div class="text-main">💲320</div>
-                </div>
-            </div>
-            <hr>
-            <!-- 商品2 -->
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex gap-5">
-                    <img class="circle rounded-circle" src="./img/SeaBreeze.png">
-                    <div>
-                        <div class="fw-semibold text-main mb-1">湖岸海鹽 Sea Breeze</div>
-                        <small class="text-sub">香調：<span class="fst-italic">海鹽 / 迷迭香 / 白松木</span></small>
-                        <div class="text-xs text-sub">容量：200g</div>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-between" style="min-width:100px;">
-                    <div class="text-main">x1</div>
-                    <div class="text-main">💲550</div>
-                </div>
-            </div>
-            <hr>
-            <!-- 商品3 -->
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex gap-5">
-                    <img class="circle rounded-circle" src="./img/WarmCedar.png">
-                    <div>
-                        <div class="fw-semibold text-main mb-1">木質溫室 Warm Cedar</div>
-                        <small class="text-sub">香調：<span class="fst-italic">雪松木 / 琥珀 / 香根草</span></small>
-                        <div class="text-xs text-sub">容量：200g</div>
-                    </div>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-between" style="min-width:100px;">
-                    <div class="text-main">x1</div>
-                    <div class="text-main">💲580</div>
-                </div>
-            </div>
-            <hr>
+            <div id="order-items"></div>
         </section>
         <!-- 📦 寄送資料 Address -->
         <section>
-            <div class="row text-main text-sm">
-                <div class="col-12 d-flex mb-2">
+            <div class="row text-main text-sm" id="order-receiver">
+                <!-- <div class="col-12 d-flex mb-2">
                     <div class="fw-semibold text-sub" style="width: 70px;">姓名:</div>
                     <div>麥可傑克森</div>
                 </div>
@@ -336,10 +287,10 @@
                 <div class="col-12 d-flex mb-2">
                     <div class="fw-semibold text-sub" style="width: 70px;">地址:</div>
                     <div>407臺中市西屯區惠來路二段101號</div>
-                </div>
+                </div> -->
             </div>
         </section>
-        <hr class="p-0">
+        <!-- <hr class="p-0"> -->
         <!-- 🧾 金額計算 Summary -->
         <section class="d-flex justify-content-end pe-2">
             <div class="p-3 rounded-3 shadow-sm bg-white" style="width: 300px;">
@@ -347,19 +298,19 @@
                     <tbody class="text-sm">
                         <tr>
                             <th class="text-sub fw-light">數量：</th>
-                            <td class="text-end">3</td>
+                            <td class="text-end" id="shopping-count">0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">小記：</th>
-                            <td class="text-end">$1,450</td>
+                            <td class="text-end" id="shopping-sum">$0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">運費：</th>
-                            <td class="text-end">$60</td>
+                            <td class="text-end" id="shopping-tax">$0</td>
                         </tr>
                         <tr>
                             <th class="text-sub fw-light">總計：</th>
-                            <td class="text-end fw-bold">$1,510</td>
+                            <td class="text-end fw-bold" id="shopping-total">$0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -368,7 +319,7 @@
         <hr class="p-0 mb-0">
         <!-- ◻️ 最底部：返回 + 下一步 -->
         <section class="d-flex justify-content-end align-items-center py-5">
-            <a href="./index.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn bg-btn-hover text-warm">
+            <a href="#" id="backHomeBtn" class="btn fw-semibold px-4 py-2 border-soft bg-btn bg-btn-hover text-warm">
                 返回首頁
             </a>
         </section>
@@ -428,6 +379,82 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 把商品畫出來 -->
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart'));
+
+        const orderItems = document.querySelector('#order-items');
+
+        if (!cart || !cart.items || cart.items.length === 0) {
+            orderItems.innerHTML = '<p class="text-sub">沒有訂單資料</p>';
+        } else {
+            cart.items.forEach(item => {
+                orderItems.innerHTML += `
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex gap-5">
+            <img class="circle rounded-circle" src="${item.img}">
+            <div>
+              <div class="fw-semibold text-main mb-1">${item.title}</div>
+              <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
+              <div class="text-xs text-sub">容量：200g</div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between" style="min-width:100px;">
+            <div class="text-main">x${item.qty}</div>
+            <div class="text-main">💲${(item.qty * item.price).toLocaleString()}</div>
+          </div>
+        </div>
+        <hr>
+      `;
+            });
+        }
+    </script>
+    <script>
+        const receiverBox = document.querySelector('#order-receiver');
+        const receiver = cart.receiver;
+
+        if (receiver) {
+            receiverBox.innerHTML = `
+      <div class="col-12 d-flex mb-2">
+        <div class="fw-semibold text-sub" style="width:70px;">姓名:</div>
+        <div>${receiver.name}</div>
+      </div>
+      <div class="col-12 d-flex mb-2">
+        <div class="fw-semibold text-sub" style="width:70px;">電話:</div>
+        <div>${receiver.phone}</div>
+      </div>
+      <div class="col-12 d-flex mb-2">
+        <div class="fw-semibold text-sub" style="width:70px;">Email:</div>
+        <div>${receiver.email}</div>
+      </div>
+      <div class="col-12 d-flex mb-2">
+        <div class="fw-semibold text-sub" style="width:70px;">地址:</div>
+        <div>
+          ${receiver.zip} ${receiver.city}${receiver.state}${receiver.address}
+        </div>
+      </div>
+    `;
+        }
+    </script>
+    <script>
+        const count = cart.items.reduce((s, i) => s + i.qty, 0);
+        const subtotal = cart.items.reduce((s, i) => s + i.qty * i.price, 0);
+        const shipping = cart.shipping;
+        const total = subtotal + shipping;
+
+        document.querySelector('#shopping-count').innerText = count;
+        document.querySelector('#shopping-sum').innerText = `$${subtotal.toLocaleString()}`;
+        document.querySelector('#shopping-tax').innerText = `$${shipping.toLocaleString()}`;
+        document.querySelector('#shopping-total').innerText = `$${total.toLocaleString()}`;
+    </script>
+    <script>
+        document.querySelector('#backHomeBtn').addEventListener('click', () => {
+            localStorage.removeItem('cart');
+            window.location.href = './index.html';
+        });
+    </script>
 </body>
 
 </html>
