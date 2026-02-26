@@ -1,44 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sunday Quiet | Shopping Cart</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-    <!-- 字體：降低雜亂感、變簡潔 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
         rel="stylesheet">
 
     <style>
-        /* ------------------------------------------
-        🎨 Sunday Quiet - 顏色 & 字體統一說明
-       ------------------------------------------
-       主背景：#F7F5F0（Cream）
-       Nav背景：#FDFDFC（Light Cream）
-       主字色：#4A4A4A 深灰
-       次字色：#A09486 奶茶灰
-       重點字：#4A3F35 咖啡深色
-
-       邊框：
-       - 奶油灰 #C9C1B5
-       - 柔灰   #D6CEC3
-
-       按鈕：
-       - 主按鈕底：#F2EEE9
-       - hover：#E8E2D8
-    -------------------------------------------*/
+        /* ============================================================
+       Sunday Quiet — 全站基礎設定
+    ============================================================ */
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #F7F5F0;
         }
 
-        /* 色票 */
+        /* ── 色票 / Token ── */
         .text-main {
             color: #4A4A4A;
         }
@@ -63,6 +46,10 @@
             border-color: #D6CEC3;
         }
 
+        .bg-warm {
+            background-color: #4A3F35;
+        }
+
         .bg-btn {
             background-color: #F2EEE9;
         }
@@ -71,12 +58,7 @@
             background-color: #E8E2D8 !important;
         }
 
-        .bg-warm {
-            background-color: #4A3F35;
-            ;
-        }
-
-        /* 字級 */
+        /* ── 字級 ── */
         .text-xs {
             font-size: 11px;
         }
@@ -89,23 +71,13 @@
             font-size: 16px;
         }
 
-        /* 小圖片 */
+        /* ── 共用元件 ── */
         .circle {
             width: 75px;
             height: 75px;
         }
 
-        /* 下拉箭頭移除 */
-        .dropdown-toggle::after {
-            display: none;
-        }
-
-        /* 下拉選單位置修正 */
-        .dropdown-menu[data-bs-popper] {
-            left: -130px;
-        }
-
-        /* nav 字體顏色 */
+        /* ── 導覽列 ── */
         .nav-link {
             color: #4A4A4A;
         }
@@ -114,7 +86,15 @@
             color: #A09486;
         }
 
-        /* input-group 統一顏色 */
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        .dropdown-menu[data-bs-popper] {
+            left: -130px;
+        }
+
+        /* ── input-group 統一顏色 ── */
         .input-group .btn,
         .input-group .form-control {
             border-color: #C9C1B5;
@@ -124,8 +104,7 @@
             background-color: #E8E2D8;
         }
 
-        /* =========================================== */
-
+        /* ── Footer ── */
         footer a {
             text-decoration: none;
             color: inherit;
@@ -141,8 +120,7 @@
             margin: 0;
         }
 
-        /* =========================================== */
-
+        /* ── 進度條 ── */
         .my-circle {
             width: 40px;
             height: 40px;
@@ -156,11 +134,12 @@
 </head>
 
 <body>
-    <!--🔹nav導覽列🔹 -->
+
+    <!-- ===================== NAV 導覽列 ===================== -->
     <nav class="navbar navbar-expand-lg bg-lightcream">
         <div class="container">
             <a class="navbar-brand" href="./index.html">
-                <img src="./img/logo.png" alt="Bootstrap" width="60" height="60">
+                <img src="./img/logo.png" alt="Sunday Quiet Logo" width="60" height="60">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -174,9 +153,9 @@
                     <li class="nav-item me-3"><a class="nav-link" href="#">香氛系列</a></li>
                     <li class="nav-item me-3"><a class="nav-link" href="#">品牌故事</a></li>
                     <li class="nav-item me-3"><a class="nav-link" href="#">聯絡我們</a></li>
-                    <li class="nav-item me-2"><a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a>
+                    <li class="nav-item me-2">
+                        <a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle"></i>
@@ -194,15 +173,17 @@
             </div>
         </div>
     </nav>
-    <!-- 🔸 MAIN -->
+
+    <!-- ===================== MAIN ===================== -->
     <main class="container bg-light px-5 px-sm-4 px-md-5 my-4 shadow rounded">
-        <!-- ⭐️ 進度條 -->
+
+        <!-- ── 步驟進度條 ── -->
         <section class="py-5">
             <h3 class="fw-bold mb-5">購物車</h3>
-            <!-- ⭐️ 進度條 -->
             <div class="container">
                 <div class="row">
-                    <!-- 1️⃣ -->
+
+                    <!-- 步驟 1（當前） -->
                     <div class="col px-0 mx-0 text-center">
                         <div class="w-100 position-relative">
                             <div
@@ -213,11 +194,10 @@
                                 <div class="progress-bar bg-success" style="width: 30%"></div>
                             </div>
                         </div>
-
                         <span>確認購物車</span>
-
                     </div>
-                    <!-- 2️⃣ -->
+
+                    <!-- 步驟 2 -->
                     <div class="col px-0 mx-0 text-center">
                         <div class="w-100 position-relative">
                             <div
@@ -228,11 +208,10 @@
                                 <div class="progress-bar bg-transparent" style="width: 30%"></div>
                             </div>
                         </div>
-
                         <span>付款與運送方式</span>
-
                     </div>
-                    <!-- 3️⃣ -->
+
+                    <!-- 步驟 3 -->
                     <div class="col px-0 mx-0 text-center">
                         <div class="w-100 position-relative">
                             <div
@@ -243,11 +222,10 @@
                                 <div class="progress-bar bg-transparent" style="width: 30%"></div>
                             </div>
                         </div>
-
                         <span>填寫資料</span>
-
                     </div>
-                    <!-- 4️⃣ -->
+
+                    <!-- 步驟 4 -->
                     <div class="col px-0 mx-0 text-center">
                         <div class="w-100 position-relative">
                             <div
@@ -255,21 +233,21 @@
                                 4
                             </div>
                         </div>
-
                         <span>完成訂購</span>
-
                     </div>
+
                 </div>
             </div>
         </section>
-        <!-- 🧾 訂單明細 -->
+
+        <!-- ── 訂單明細 ── -->
         <section>
             <hr>
             <h4 class="fw-bold my-4">訂單明細</h4>
-            <!-- 🔸 商品列表 -->
             <div id="shopping-list"></div>
         </section>
-        <!-- 🧾 金額計算 Summary -->
+
+        <!-- ── 金額 Summary ── -->
         <section class="d-flex justify-content-end pe-2">
             <div class="p-3 rounded-3 shadow-sm bg-white border" style="width: 300px;">
                 <table class="table table-borderless table-sm mb-0">
@@ -294,49 +272,51 @@
                 </table>
             </div>
         </section>
+
         <hr class="p-0 mb-0">
-        <!-- ◻️ 最底部：返回 + 下一步 -->
+
+        <!-- ── 底部：返回 + 下一步 ── -->
         <section class="d-flex justify-content-between align-items-center py-5">
             <a href="./index.html" class="text-decoration-none text-sub d-flex align-items-center gap-1">
                 <i class="bi bi-chevron-left"></i>
                 返回購物
             </a>
-
             <a href="./cart-02.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn bg-btn-hover text-warm">
                 下一步
             </a>
         </section>
+
     </main>
 
-    <!-- 🔻 FOOTER -->
+    <!-- ===================== FOOTER ===================== -->
     <footer class="container-fluid w-100 bg-lightcream pt-5 pb-2">
         <div class="row justify-content-md-center align-items-start text-center text-lg-start py-5">
-            <!-- 🔸左側 Logo + 文案 -->
+            <!-- Logo + 品牌文案 -->
             <div class="col-12 col-md-12 col-lg-4 mb-4 mt-3 mb-lg-0">
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="./img/logo.png" alt="Bootstrap" width="40" height="40">
-                    <span class="ms-2 fw-semibold text-main">SundayQuite</span>
+                    <img src="./img/logo.png" alt="Sunday Quiet Logo" width="40" height="40">
+                    <span class="ms-2 fw-semibold text-main">Sunday Quiet</span>
                 </div>
                 <p class="text-center text-warm mx-auto my-2" style="max-width: 260px;">
                     <small>Soft light, quiet breath, slower living.</small><br>
                     <small>Scented moments for a calmer day.</small>
                 </p>
             </div>
-            <!-- 🔸欄位 1 -->
+            <!-- 商品分類 -->
             <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
                 <div class="fs-5 mb-3 fw-light text-warm">商品分類</div>
                 <p class="mb-1 text-main"><a href="#">經典香氛蠟燭</a></p>
                 <p class="mb-1 text-main"><a href="#">居家擴香</a></p>
                 <p class="mb-1 text-main"><a href="#">禮盒組</a></p>
             </div>
-            <!-- 🔸欄位 2 -->
+            <!-- 關於品牌 -->
             <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
                 <div class="fs-5 mb-3 fw-light text-warm">關於品牌</div>
                 <p class="mb-1 text-main"><a href="#">品牌故事</a></p>
                 <p class="mb-1 text-main"><a href="#">製作工藝</a></p>
                 <p class="mb-1 text-main"><a href="#">永續承諾</a></p>
             </div>
-            <!-- 🔸欄位 3 -->
+            <!-- 客戶支援 -->
             <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
                 <div class="fs-5 mb-3 fw-light text-warm">客戶支援</div>
                 <p class="mb-1 text-main"><a href="#">運送方式</a></p>
@@ -344,7 +324,7 @@
                 <p class="mb-1 text-main"><a href="#">訂單查詢</a></p>
                 <p class="mb-1 text-main"><a href="#">聯絡我們</a></p>
             </div>
-            <!-- 🔸欄位 4 -->
+            <!-- 靈感與內容 -->
             <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
                 <div class="fs-5 mb-3 fw-light text-warm">靈感與內容</div>
                 <p class="mb-1 text-main"><a href="#">香調指南</a></p>
@@ -352,9 +332,8 @@
                 <p class="mb-1 text-main"><a href="#">最新文章</a></p>
             </div>
         </div>
-        <!-- 🐈‍⬛ 商標 -->
         <div class="d-flex justify-content-between px-3 py-2">
-            <small class="text-xs">Copyright © 2025 SundayQuite Company</small>
+            <small class="text-xs">Copyright &copy; 2025 Sunday Quiet Company</small>
             <div>
                 <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
@@ -363,224 +342,92 @@
         </div>
     </footer>
 
+    <!-- ===================== JS ===================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- 把八項商品全部跑進去商品列表 -->
-    <!-- <script>
-        //    把index的資料抓進來
-        let shoppingItem = JSON.parse(localStorage.getItem('shoppingList'));
-
-        // 用回圈跑進商品項目裡
-        const shoppingList = document.querySelector('#shopping-list');
-        shoppingList.innerHTML = '';
-        shoppingItem.forEach(item => {
-            shoppingList.innerHTML += `
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-3 gap-md-5">
-                        <img class="circle rounded-circle" src="${item.img}">
-                        <div>
-                            <div class="fw-semibold text-main mb-1">${item.title}</div>
-                            <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
-                            <div class="text-xs text-sub">容量：200g</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        <div class="input-group mx-3" style="width:120px;">
-                            <button class="btn">-</button>
-                            <input type="text" class="form-control text-center" value="1">
-                            <button class="btn">+</button>
-                        </div>
-                        <div class="text-main">💲 ${item.price}</div>
-                    </div>
-                </div>
-                <hr>
-            `
-        });
-    </script> -->
-
-    <!-- 把在index.html選購的商品加進來並顯示 -->
-    <!-- <script>
-
-        let shoppingData = JSON.parse(localStorage.getItem('shoppingList'));
-        let shopping = JSON.parse(localStorage.getItem('shopping'));
-
-        // 用shoppingDate物件陣列去篩選出shopping中的資料
-        const newshopping = shoppingData.filter(item => {
-            if (shopping.includes(item.title)) {
-                return item;
-            }
-        })
-
-        // 用回圈跑進商品項目裡
-        const shoppingList = document.querySelector('#shopping-list');
-        shoppingList.innerHTML = '';
-        newshopping.forEach(item => {
-            shoppingList.innerHTML += `
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-3 gap-md-5">
-                        <img class="circle rounded-circle" src="${item.img}">
-                        <div>
-                            <div class="fw-semibold text-main mb-1">${item.title}</div>
-                            <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
-                            <div class="text-xs text-sub">容量：200g</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        <div class="input-group mx-3" style="width:120px;">
-                            <button class="btn">-</button>
-                            <input type="text" class="form-control text-center" value="1">
-                            <button class="btn">+</button>
-                        </div>
-                        <div class="text-main">💲 ${item.price}</div>
-                    </div>
-                </div>
-                <hr>
-            `
-        });
-
-    </script> -->
-
-    <!-- 把在index.html選購的商品加進來並顯示，並給每一個商品加上 total=[1]，最後篩選出來，產生新陣列。-->
-    <!-- <script>
-
-        // 1. 抓取在application的資料
-        // 全部商品
-        let shoppingData = JSON.parse(localStorage.getItem('shoppingList'));
-        // 點選加入購物車的商品(只有title)
-        let shopping = JSON.parse(localStorage.getItem('shopping'));
-        // 先讀取 cart（如果有）
-        const savedCart = JSON.parse(localStorage.getItem('cart'));
-
-        // 2. 從「全部商品(shoppingData)」中
-        //    篩選出「有被加入購物車(shopping)」的商品
-        //    組成新的陣列 nowshopping
-        // let nowshopping =
-        //     shoppingData.filter(item => {
-
-        //         // 看起來是將『每個』項目（含未加購）新增tatal物件
-        //         // 之後 filter 會跑過每一個 item
-        //         // 但最後留下來的 只有被加入購物車的商品
-        //         // 未加購的商品 雖然被加過 total，但最後不在 nowshopping 裡
-        //         // 而 shoppingData 裡面的資料本身也會跟著變化
-        //         item['total'] = 1;
-
-        //         // 如果shopping陣列中包含當前的商品(item)，就回傳這個商品的物件
-        //         if (shopping.includes(item.title)) {
-        //             return item;
-        //         }
-
-        //     })
-        
-        // 建立 nowshopping（cart 是唯一真相）
-        let nowshopping = shoppingData
-            .filter(item => shopping.includes(item.title))   // 只留下有加入購物車的商品
-            .map(item => {
-                // 從 cart 裡找有沒有這個商品
-                const cartItem = savedCart?.items.find(
-                    i => i.title === item.title
-                );
-
-                return {
-                    ...item,
-                    // 如果 cart 裡有這個商品，用 cart 的 qty
-                    // 沒有的話（第一次進購物車），預設 1
-                    total: cartItem ? cartItem.qty : 1
-                };
-            });
-
-
-        // --------------------- 把資料用forEach + innerHTML建立出來 -------------------
-        const shoppingList = document.querySelector('#shopping-list');
-        shoppingList.innerHTML = '';
-
-        nowshopping.forEach(item => {
-            shoppingList.innerHTML += `
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-3 gap-md-5">
-                        <img class="circle rounded-circle" src="${item.img}">
-                        <div>
-                            <div class="fw-semibold text-main mb-1">${item.title}</div>
-                            <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
-                            <div class="text-xs text-sub">容量：200g</div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                        <div class="input-group mx-3" style="width:120px;">
-                            <button class="btn btn-click" data-calculate="-1">-</button>
-                            <input type="text" class="form-control text-center" value="${item.total}" data-shoppingname="${item.title}">
-                            <button class="btn btn-click" data-calculate="1">+</button>
-                        </div>
-                        <div class="text-main">💲 ${item.price}</div>
-                    </div>
-                </div>
-                <hr>
-            `
-        });
-        // --------------------- -------------------------------- -------------------
-    </script> -->
     <script>
-        // 1) 讀商品資料庫（只是用來補資料，沒有也沒關係）
-        const shoppingData = JSON.parse(localStorage.getItem('shoppingList')) || [];
+        /* ============================================================
+           購物車頁面邏輯
+        ============================================================ */
 
-        // 2) 讀 cart（唯一真相）
+        // ── 讀取資料 ──────────────────────────────────────────────
+        // shoppingData：商品資料庫（補充 img / tag 等欄位用）
+        const shoppingData = JSON.parse(localStorage.getItem('shoppingList')) || [];
+        // savedCart：唯一真相，紀錄實際加入購物車的商品與數量
         const savedCart = JSON.parse(localStorage.getItem('cart')) || { items: [], shipping: 60 };
 
-        // 3) 產生 nowshopping：以 cart.items 為主
-        //    如果 cart 裡有 img/tag/price 就直接用
-        //    如果沒有，就去 shoppingList 補上（避免壞掉）
+        // ── 產生 nowshopping（以 cart.items 為主，缺欄位才從 shoppingData 補）─
         let nowshopping = (savedCart.items || []).map(ci => {
             const full = shoppingData.find(p => p.title === ci.title);
-
             return {
                 title: ci.title,
                 price: Number(ci.price ?? full?.price ?? 0),
                 img: ci.img ?? full?.img ?? '',
                 tag: ci.tag ?? full?.tag ?? '',
-                total: Number(ci.qty ?? 1) // 你畫面用 total，我們就對應 qty
+                total: Number(ci.qty ?? 1)       // qty（cart）→ total（畫面用）
             };
         });
 
-        // --------------------- render -------------------
+        // ── 渲染商品列表 ──────────────────────────────────────────
         const shoppingListEl = document.querySelector('#shopping-list');
         shoppingListEl.innerHTML = '';
 
-        // 如果購物車是空的，顯示提示
         if (nowshopping.length === 0) {
             shoppingListEl.innerHTML = `
-      <div class="text-center text-sub py-5">
-        購物車目前是空的喔 🛒
-      </div>
-    `;
+        <div class="text-center text-sub py-5">
+          購物車目前是空的喔 🛒
+        </div>
+      `;
         } else {
             nowshopping.forEach(item => {
                 shoppingListEl.innerHTML += `
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex gap-3 gap-md-5">
-            <img class="circle rounded-circle" src="${item.img}">
-            <div>
-              <div class="fw-semibold text-main mb-1">${item.title}</div>
-              <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
-              <div class="text-xs text-sub">容量：200g</div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-3 gap-md-5">
+              <img class="circle rounded-circle" src="${item.img}" alt="${item.title}">
+              <div>
+                <div class="fw-semibold text-main mb-1">${item.title}</div>
+                <small class="text-sub">香調：<span class="fst-italic">${item.tag}</span></small>
+                <div class="text-xs text-sub">容量：200g</div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="input-group mx-3" style="width: 120px;">
+                <button class="btn btn-click" data-calculate="-1">-</button>
+                <input type="text" class="form-control text-center"
+                  value="${item.total}" data-shoppingname="${item.title}">
+                <button class="btn btn-click" data-calculate="1">+</button>
+              </div>
+              <div class="text-main">💲 ${Number(item.price).toLocaleString()}</div>
             </div>
           </div>
-
-          <div class="d-flex align-items-center">
-            <div class="input-group mx-3" style="width:120px;">
-              <button class="btn btn-click" data-calculate="-1">-</button>
-              <input type="text" class="form-control text-center" value="${item.total}" data-shoppingname="${item.title}">
-              <button class="btn btn-click" data-calculate="1">+</button>
-            </div>
-            <div class="text-main">💲 ${Number(item.price).toLocaleString()}</div>
-          </div>
-        </div>
-        <hr>
-      `;
+          <hr>
+        `;
             });
         }
 
+        // ── 數量加減按鈕（+ / -）────────────────────────────────
+        document.querySelectorAll('.btn-click').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = btn.parentNode.children[1];
+                const title = input.dataset.shoppingname;
+                const delta = parseInt(btn.dataset.calculate, 10);
+                let qty = parseInt(input.value, 10) + delta;
+                if (qty < 1) qty = 1;
+
+                input.value = qty;
+
+                const item = nowshopping.find(p => p.title === title);
+                if (!item) return;
+
+                item.total = qty;
+                btn.parentNode.nextElementSibling.innerHTML =
+                    `💲${(Number(item.price) * qty).toLocaleString()}`;
+
+                calculatePrice();
+            });
+        });
+
+        // ── 手動輸入數量 ─────────────────────────────────────────
         document.querySelectorAll('input[data-shoppingname]').forEach(input => {
             input.addEventListener('change', () => {
                 const title = input.dataset.shoppingname;
@@ -592,222 +439,34 @@
                 if (!item) return;
 
                 item.total = qty;
-                CalculatePrice();
-            });
-        });
-    </script>
-
-    <!-- 讓每個商品按下-跟+之後，數量會動 -->
-    <script>
-
-        // 加減符號控制裡面的數量跟價格
-
-        // 把所有-跟+按鈕都抓出來
-        const btnDown = document.querySelectorAll('.btn-down');
-        const btnUp = document.querySelectorAll('.btn-up');
-
-        // 把每個 ➖ 都裝上監聽器，還有監聽器裡面要執行的東西
-        // btnDown.forEach(item => {
-        //     // 裝監聽器
-        //     item.addEventListener('click', function () {
-
-        //         // 首先先讓 ➖ 被按下後，可以讓input的value也減１
-        //         // 解釋：讓ｄｏｗｎ變成 item(當前的btnDown).parentNode(母層=>一整個div)
-        //         // .children(的子層)，[1](子層第一個=>input-group)，value(的值 => 預設 1/total)
-        //         // # 簡單來說，就是讓down變成 1(total)
-        //         let down = item.parentNode.children[1].value
-
-        //         let orginPrice = 0;
-
-        //         // 如果input裡的value(值)大於1
-        //         if (down > 1) {
-        //             // down就可以被減
-        //             down--;
-        //         }
-        //         // 直接改畫面上的input的值
-        //         item.parentNode.children[1].value = down;
-        //         // ☛這樣做是因為如果先改陣列然後再直接從陣列中印出來，會更麻煩（程式碼可能更多）
-
-        //         // 找到陣列裡的資料進行更新
-        //         nowshopping.forEach(changeItem => {
-        //             // 更新的資料與沒有更新的資料進行回傳
-        //             // 如果當前的值跟
-        //             // .parentNode(母層=>一整個div).children(的子層)，[1](子層第一個=>input-group)，
-        //             // .dataset(的資料存放).shoppingname(資料名 => 商品名稱)一樣的話
-        //             if (changeItem.title === item.parentNode.children[1].dataset.shoppingname) {
-        //                 // 當前的值就變成down
-        //                 // 這是更新整個陣列裡面的值
-        //                 changeItem['total'] = down;
-
-        //                 // 把金額取出來使用
-        //                 // orginPrice(原始金額) = changeItem.price(當前陣列跑道的商品的價格)
-        //                 //changeItem.price(ex:680.00)是字串，要把字串轉成浮點數(parseFloat)
-        //                 orginPrice = parseFloat(changeItem.price);
-        //             }
-
-        //             // 顯示的金額再重新計算
-        //             // 數量 -> up
-        //             // 原始價錢 -> orginPrice
-        //             // item(當前項目).parentNode(取親層).nextElementSibling(取親層的右邊那層)
-        //             // .innerHTML修改HTML，orginPrice(原始金額) * up(點擊按鈕後增加1的數量)
-        //             item.parentNode.nextElementSibling.innerHTML = `💲${String((orginPrice * down).toFixed(2))}`;
-
-        //             CalculatePrice(); //執行計算
-        //         })
-
-
-        //     })
-        // })
-
-        // 把每個 + 都裝上監聽器，還有監聽器裡面要執行的東西
-        // btnUp.forEach(item => {
-        //     item.addEventListener('click', function () {
-
-        //         let up = item.parentNode.children[1].value;
-        //         up++;
-
-        //         let orginPrice = 0;
-
-        //         // 找到陣列裡的資料進行更新
-        //         nowshopping.forEach(changeItem => {
-        //             // 更新的資料與沒有更新的資料進行回傳
-        //             // 如果當前的值跟
-        //             // .parentNode(母層=>一整個div).children(的子層)，[1](子層第一個=>input-group)，
-        //             // .dataset(的資料存放).shoppingname(資料名 => 商品名稱)一樣的話
-        //             if (changeItem.title === item.parentNode.children[1].dataset.shoppingname) {
-        //                 changeItem['total'] = up;
-        //                 item.parentNode.children[1].value = up;
-        //                 // 把金額取出來使用
-        //                 // orginPrice(原始金額) = changeItem.price(當前陣列跑道的商品的價格)
-        //                 //changeItem.price(ex:680.00)是字串，要把字串轉成浮點數(parseFloat)
-        //                 orginPrice = parseFloat(changeItem.price);
-        //             }
-        //         })
-
-        //         // 顯示的金額再重新計算
-        //         // 數量 -> up
-        //         // 原始價錢 -> orginPrice
-        //         // item(當前項目).parentNode(取親層).nextElementSibling(取親層的右邊那層)
-        //         // .innerHTML修改HTML，orginPrice(原始金額) * up(點擊按鈕後增加1的數量)
-        //         item.parentNode.nextElementSibling.innerHTML = `💲${String((orginPrice * up).toFixed(2))}`;
-
-        //         CalculatePrice(); //執行計算
-
-        //     })
-        // })
-
-        // 整合 - 跟 +
-        const btnClick = document.querySelectorAll('.btn-click');
-
-        btnClick.forEach(item => {
-            // 綁監聽事件
-            item.addEventListener('click', function () {
-
-                // cal是input的值
-                let cal = item.parentNode.children[1].value
-                let orginPrice = 0;
-
-
-                // ==================== 變動區 ==========================
-                // cal等於cal加上btn-click的dataset值(1或-1)
-                // 如果dataset值是1(加號btn)就會等於+1
-                // 相反如果dataset值是-1(減號btn)就會等於-1
-                cal = parseInt(cal) + parseInt(item.dataset.calculate);
-                // 如果cal加完之後會小於1，那cal就要變回1
-                if (cal < 1) {
-                    cal = 1;
-                };
-                // ====================================================
-
-
-
-                // 直接改畫面上的input的值
-                item.parentNode.children[1].value = cal;
-
-                // 找到陣列裡的資料進行更新
-                // nowshopping.forEach(changeItem => {
-                //     if (changeItem.title === item.parentNode.children[1].dataset.shoppingname) {
-                //         changeItem['total'] = cal;
-
-                //         orginPrice = parseFloat(changeItem.price);
-                //     }
-                //     const price = orginPrice * cal;
-
-                //     item.parentNode.nextElementSibling.innerHTML =
-                //         `💲${price.toLocaleString()}`;
-
-                //     CalculatePrice(); //執行計算
-
-                // });
-
-                const title = item.parentNode.children[1].dataset.shoppingname;
-
-                // 找到被點擊的那個商品
-                const changeItem = nowshopping.find(p => p.title === title);
-                if (!changeItem) return;
-
-                changeItem.total = cal;
-
-                const price = Number(changeItem.price) * cal;
-                item.parentNode.nextElementSibling.innerHTML = `💲${price.toLocaleString()}`;
-
-                CalculatePrice(); // 只算一次就好
+                calculatePrice();
             });
         });
 
-    </script>
+        // ── 計算並更新頁面金額 ───────────────────────────────────
+        function calculatePrice() {
+            const taxEl = document.querySelector('#shopping-tax');
+            const shipping = Number(taxEl.innerHTML.replace('$', '').replace(',', ''));
 
-    <!-- 讓下方的價格｜運費｜數量｜總計，會跟著變動(的函式) -->
-    <script>
-        // 👉🏻 一開始這段程式碼只會跑一次(網頁中跑一次)，
-        // 所以也只會根據最初始陣列 nowshopping 中的資料執行一次初始金額計算
-        // 💭（我覺得我好像懂了那種，明明更新了陣列的資料後，畫面不會跟著變那種感覺 😑。）
-        // 就是已經在按下 + 或 - 的監聽程式中，做了更新nowshopping的total的動作，
-        // 但還要再另外做讓 nowshopping 重新顯示的東西，要不然下面有關 nowshopping 的更新也不會跟著變
-        // 總而言之言而總之就是超級麻煩。超級。
+            let totalQty = 0;
+            let subtotal = 0;
 
+            nowshopping.forEach(item => {
+                totalQty += item.total;
+                subtotal += Number(item.total) * Number(item.price);
+            });
 
+            document.querySelector('#shopping-count').innerHTML = totalQty;
+            document.querySelector('#shopping-sum').innerHTML = `$${subtotal.toLocaleString()}`;
+            document.querySelector('#shopping-total').innerHTML = `$${(subtotal + shipping).toLocaleString()}`;
 
-        // 之後要讓價格可以重計算 => 包成一個方法
-        function CalculatePrice() {
-
-            // 商品的金額
-            let shoppingCount = document.querySelector('#shopping-count');
-            let shoppingSum = document.querySelector('#shopping-sum');
-            let shoppingTax = document.querySelector('#shopping-tax');
-            let shoppingTotal = document.querySelector('#shopping-total');
-
-            // 初始的數量
-            let SPCount = 0;
-            // 初始的金額
-            let SPSum = 0;
-
-            // 數量的計算
-            nowshopping.forEach(changeItem => {
-                SPCount += changeItem.total;   //數量的計算
-                SPSum += Number(changeItem.total) * Number(changeItem.price);  // 金額的計算
-            })
-
-            // 先取得運費資料
-            // 先裝一個變數後再處理資料
-            let SPTax = parseFloat(String(shoppingTax.innerHTML).replace('$', ''))
-
-            // 總計
-            // console.log(SPSum + SPTax);
-
-            // 放回去對應的位置
-            shoppingCount.innerHTML = SPCount;
-            shoppingSum.innerHTML = `$${SPSum.toLocaleString()}`;
-            shoppingTotal.innerHTML = `$${(SPSum + SPTax).toLocaleString()}`;
-
-            // 存最新狀態
             saveCart();
         }
 
-        // 把現在 nowshopping 的每個商品（含數量）存進 localStorage.cart
+        // ── 將最新狀態存回 localStorage.cart ────────────────────
         function saveCart() {
-            const shippingText = document.querySelector('#shopping-tax')?.innerHTML || '$0';
-            const shipping = Number(String(shippingText).replace('$', '').replace(',', ''));
+            const taxEl = document.querySelector('#shopping-tax');
+            const shipping = Number((taxEl?.innerHTML || '$0').replace('$', '').replace(',', ''));
 
             const cart = {
                 items: nowshopping.map(i => ({
@@ -823,11 +482,10 @@
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
-
-        CalculatePrice(); //執行計算
-
-
+        // ── 初始化計算 ───────────────────────────────────────────
+        calculatePrice();
     </script>
+
 </body>
 
 </html>
