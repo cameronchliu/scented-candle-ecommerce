@@ -2,383 +2,206 @@
 <html lang="zh-Hant">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunday Quiet | Shopping Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sunday Quiet | Shopping Cart</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 1. Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <style>
-    /* ============================================================
-       Sunday Quiet — 全站基礎設定
-    ============================================================ */
+    <!-- 2. 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 
-    body { font-family: 'Noto Sans TC', sans-serif; background-color: #F7F5F0; }
-
-    /* ── 色票 / Token ── */
-    .text-main { color: #4A4A4A; }
-    .text-sub  { color: #A09486; }
-    .text-warm { color: #4A3F35; }
-
-    .bg-lightcream { background-color: #FDFDFC; }
-    .border-cream  { border-color: #C9C1B5; }
-    .border-soft   { border-color: #D6CEC3; }
-    .bg-warm       { background-color: #4A3F35; }
-
-    .bg-btn          { background-color: #F2EEE9; }
-    .bg-btn-hover:hover { background-color: #E8E2D8 !important; }
-
-    /* ── 字級 ── */
-    .text-xs { font-size: 11px; }
-    .text-sm { font-size: 14px; }
-    .text-md { font-size: 16px; }
-
-    /* ── 共用元件 ── */
-    .circle { width: 75px; height: 75px; }
-
-    /* ── 導覽列 ── */
-    .nav-link       { color: #4A4A4A; }
-    .nav-link:hover { color: #A09486; }
-    .dropdown-toggle::after        { display: none; }
-    .dropdown-menu[data-bs-popper] { left: -130px; }
-
-    /* ── input-group 統一顏色 ── */
-    .input-group .btn,
-    .input-group .form-control { border-color: #C9C1B5; }
-    .input-group .btn:hover    { background-color: #E8E2D8; }
-
-    /* ── Footer ── */
-    footer a       { text-decoration: none; color: inherit; font-size: 13.5px; }
-    footer a:hover { text-decoration: underline; color: #A09486; }
-    footer p       { margin: 0; }
-
-    /* ── 進度條 ── */
-    .my-circle   { width: 40px; height: 40px; }
-    .my-progress {
-      width: calc(100% - 2 * 20px - 8px * 2);
-      height: 10px;
-    }
-  </style>
+    <!-- 3. 全站共用樣式 -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-  <!-- ===================== NAV 導覽列 ===================== -->
-  <nav class="navbar navbar-expand-lg bg-lightcream">
-    <div class="container">
-      <a class="navbar-brand" href="./index.html">
-        <img src="./img/logo.png" alt="Sunday Quiet Logo" width="60" height="60">
-      </a>
+    <!-- ===================== NAV 導覽列 ===================== -->
+    <div id="nav-placeholder"></div>
 
-      <button class="navbar-toggler" type="button"
-        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- ===================== MAIN ===================== -->
+    <main class="container bg-light px-5 my-4 shadow rounded">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-main">
-          <li class="nav-item me-3"><a class="nav-link" href="#">商店</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">香氛系列</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">品牌故事</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">聯絡我們</a></li>
-          <li class="nav-item me-2">
-            <a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i>
+        <!-- ── 步驟進度條 ── -->
+        <section class="py-5">
+            <h3 class="fw-bold mb-5">購物車</h3>
+            <div class="container">
+                <div class="row">
+
+                    <!-- 步驟 1（已完成） -->
+                    <div class="col px-0 mx-0 text-center">
+                        <div class="w-100 position-relative">
+                            <div
+                                class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
+                                1
+                            </div>
+                            <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
+                                <div class="progress-bar w-100 bg-success"></div>
+                            </div>
+                        </div>
+                        <span>確認購物車</span>
+                    </div>
+
+                    <!-- 步驟 2（已完成） -->
+                    <div class="col px-0 mx-0 text-center">
+                        <div class="w-100 position-relative">
+                            <div
+                                class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
+                                2
+                            </div>
+                            <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
+                                <div class="progress-bar w-100 bg-success"></div>
+                            </div>
+                        </div>
+                        <span>付款與運送方式</span>
+                    </div>
+
+                    <!-- 步驟 3（當前） -->
+                    <div class="col px-0 mx-0 text-center">
+                        <div class="w-100 position-relative">
+                            <div
+                                class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
+                                3
+                            </div>
+                            <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
+                                <div class="progress-bar bg-success" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <span>填寫資料</span>
+                    </div>
+
+                    <!-- 步驟 4 -->
+                    <div class="col px-0 mx-0 text-center">
+                        <div class="w-100 position-relative">
+                            <div
+                                class="mx-auto my-circle rounded-circle bg-secondary-subtle text-secondary d-flex justify-content-center align-items-center">
+                                4
+                            </div>
+                        </div>
+                        <span>完成訂購</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 寄送資料表單 ── -->
+        <section>
+            <hr>
+            <h4 class="fw-bold mb-4">寄送資料</h4>
+            <form class="row g-3 text-main">
+
+                <div class="col-12">
+                    <label for="inputName" class="form-label">姓名 <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputNumber" class="form-label">手機 <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" id="inputNumber">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputTel" class="form-label">市話（非必填）</label>
+                    <input type="tel" class="form-control" id="inputTel">
+                </div>
+
+                <div class="col-12">
+                    <label for="inputEmail" class="form-label">電子郵件 <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="inputEmail">
+                </div>
+
+                <div class="col-sm-6 col-md-5">
+                    <label for="inputCity" class="form-label">縣市 <span class="text-danger">*</span></label>
+                    <select id="inputCity" class="form-select">
+                        <option selected>請選擇...</option>
+                        <option>台北市</option>
+                        <option>台中市</option>
+                        <option>台南市</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-6 col-md-5">
+                    <label for="inputState" class="form-label">鄉鎮市區 <span class="text-danger">*</span></label>
+                    <select id="inputState" class="form-select">
+                        <option selected>請選擇...</option>
+                        <option>...</option>
+                    </select>
+                </div>
+
+                <div class="col-3 col-md-2">
+                    <label for="inputZip" class="form-label">郵遞區號</label>
+                    <input type="text" class="form-control" id="inputZip">
+                </div>
+
+                <div class="col-9 col-md-12">
+                    <label for="inputAddress2" class="form-label">詳細地址 <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="請輸入路段、巷弄、門牌號碼及樓層">
+                </div>
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">設為預設地址</label>
+                    </div>
+                </div>
+
+            </form>
+            <hr>
+        </section>
+
+        <!-- ── 金額 Summary ── -->
+        <section class="d-flex justify-content-end pe-2">
+            <div class="p-3 rounded-3 shadow-sm bg-white" style="width: 300px;">
+                <table class="table table-borderless table-sm mb-0">
+                    <tbody class="text-sm">
+                        <tr>
+                            <th class="text-sub fw-light">數量：</th>
+                            <td id="shopping-count" class="text-end">0</td>
+                        </tr>
+                        <tr>
+                            <th class="text-sub fw-light">小記：</th>
+                            <td id="shopping-sum" class="text-end">$0</td>
+                        </tr>
+                        <tr>
+                            <th class="text-sub fw-light">運費：</th>
+                            <td id="shopping-tax" class="text-end">$0</td>
+                        </tr>
+                        <tr>
+                            <th class="text-sub fw-light">總計：</th>
+                            <td id="shopping-total" class="text-end fw-bold">$0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="p-0 mb-0">
+
+        <!-- ── 底部：上一步 + 下一步 ── -->
+        <section class="d-flex justify-content-between align-items-center py-5">
+            <a href="./cart-02.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn-hover text-sub">
+                上一步
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./login.html">Login</a></li>
-              <li><a class="dropdown-item" href="#">Sign up</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Help</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <a href="./cart-04.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn bg-btn-hover text-warm">
+                下一步
+            </a>
+        </section>
 
-  <!-- ===================== MAIN ===================== -->
-  <main class="container bg-light px-5 my-4 shadow rounded">
+    </main>
 
-    <!-- ── 步驟進度條 ── -->
-    <section class="py-5">
-      <h3 class="fw-bold mb-5">購物車</h3>
-      <div class="container">
-        <div class="row">
+    <!-- ===================== FOOTER ===================== -->
+    <div id="footer-placeholder"></div>
 
-          <!-- 步驟 1（已完成） -->
-          <div class="col px-0 mx-0 text-center">
-            <div class="w-100 position-relative">
-              <div class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
-                1
-              </div>
-              <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
-                <div class="progress-bar w-100 bg-success"></div>
-              </div>
-            </div>
-            <span>確認購物車</span>
-          </div>
-
-          <!-- 步驟 2（已完成） -->
-          <div class="col px-0 mx-0 text-center">
-            <div class="w-100 position-relative">
-              <div class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
-                2
-              </div>
-              <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
-                <div class="progress-bar w-100 bg-success"></div>
-              </div>
-            </div>
-            <span>付款與運送方式</span>
-          </div>
-
-          <!-- 步驟 3（當前） -->
-          <div class="col px-0 mx-0 text-center">
-            <div class="w-100 position-relative">
-              <div class="mx-auto my-circle rounded-circle bg-success text-white d-flex justify-content-center align-items-center">
-                3
-              </div>
-              <div class="my-progress progress position-absolute top-50 start-100 translate-middle z-3">
-                <div class="progress-bar bg-success" style="width: 30%"></div>
-              </div>
-            </div>
-            <span>填寫資料</span>
-          </div>
-
-          <!-- 步驟 4 -->
-          <div class="col px-0 mx-0 text-center">
-            <div class="w-100 position-relative">
-              <div class="mx-auto my-circle rounded-circle bg-secondary-subtle text-secondary d-flex justify-content-center align-items-center">
-                4
-              </div>
-            </div>
-            <span>完成訂購</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 寄送資料表單 ── -->
-    <section>
-      <hr>
-      <h4 class="fw-bold mb-4">寄送資料</h4>
-      <form class="row g-3 text-main">
-
-        <div class="col-12">
-          <label for="inputName" class="form-label">姓名 <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="inputName">
-        </div>
-
-        <div class="col-md-6">
-          <label for="inputNumber" class="form-label">手機 <span class="text-danger">*</span></label>
-          <input type="tel" class="form-control" id="inputNumber">
-        </div>
-
-        <div class="col-md-6">
-          <label for="inputTel" class="form-label">市話（非必填）</label>
-          <input type="tel" class="form-control" id="inputTel">
-        </div>
-
-        <div class="col-12">
-          <label for="inputEmail" class="form-label">電子郵件 <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" id="inputEmail">
-        </div>
-
-        <div class="col-sm-6 col-md-5">
-          <label for="inputCity" class="form-label">縣市 <span class="text-danger">*</span></label>
-          <select id="inputCity" class="form-select">
-            <option selected>請選擇...</option>
-            <option>台北市</option>
-            <option>台中市</option>
-            <option>台南市</option>
-          </select>
-        </div>
-
-        <div class="col-sm-6 col-md-5">
-          <label for="inputState" class="form-label">鄉鎮市區 <span class="text-danger">*</span></label>
-          <select id="inputState" class="form-select">
-            <option selected>請選擇...</option>
-            <option>...</option>
-          </select>
-        </div>
-
-        <div class="col-3 col-md-2">
-          <label for="inputZip" class="form-label">郵遞區號</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
-
-        <div class="col-9 col-md-12">
-          <label for="inputAddress2" class="form-label">詳細地址 <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="請輸入路段、巷弄、門牌號碼及樓層">
-        </div>
-
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">設為預設地址</label>
-          </div>
-        </div>
-
-      </form>
-      <hr>
-    </section>
-
-    <!-- ── 金額 Summary ── -->
-    <section class="d-flex justify-content-end pe-2">
-      <div class="p-3 rounded-3 shadow-sm bg-white" style="width: 300px;">
-        <table class="table table-borderless table-sm mb-0">
-          <tbody class="text-sm">
-            <tr>
-              <th class="text-sub fw-light">數量：</th>
-              <td id="shopping-count" class="text-end">0</td>
-            </tr>
-            <tr>
-              <th class="text-sub fw-light">小記：</th>
-              <td id="shopping-sum" class="text-end">$0</td>
-            </tr>
-            <tr>
-              <th class="text-sub fw-light">運費：</th>
-              <td id="shopping-tax" class="text-end">$0</td>
-            </tr>
-            <tr>
-              <th class="text-sub fw-light">總計：</th>
-              <td id="shopping-total" class="text-end fw-bold">$0</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <hr class="p-0 mb-0">
-
-    <!-- ── 底部：上一步 + 下一步 ── -->
-    <section class="d-flex justify-content-between align-items-center py-5">
-      <a href="./cart-02.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn-hover text-sub">
-        上一步
-      </a>
-      <a href="./cart-04.html" class="btn fw-semibold px-4 py-2 border-soft bg-btn bg-btn-hover text-warm">
-        下一步
-      </a>
-    </section>
-
-  </main>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="container-fluid w-100 bg-lightcream pt-5 pb-2">
-    <div class="row justify-content-md-center align-items-start text-center text-lg-start py-5">
-      <!-- Logo + 品牌文案 -->
-      <div class="col-12 col-md-12 col-lg-4 mb-4 mt-3 mb-lg-0">
-        <div class="d-flex justify-content-center align-items-center">
-          <img src="./img/logo.png" alt="Sunday Quiet Logo" width="40" height="40">
-          <span class="ms-2 fw-semibold text-main">Sunday Quiet</span>
-        </div>
-        <p class="text-center text-warm mx-auto my-2" style="max-width: 260px;">
-          <small>Soft light, quiet breath, slower living.</small><br>
-          <small>Scented moments for a calmer day.</small>
-        </p>
-      </div>
-      <!-- 商品分類 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">商品分類</div>
-        <p class="mb-1 text-main"><a href="#">經典香氛蠟燭</a></p>
-        <p class="mb-1 text-main"><a href="#">居家擴香</a></p>
-        <p class="mb-1 text-main"><a href="#">禮盒組</a></p>
-      </div>
-      <!-- 關於品牌 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">關於品牌</div>
-        <p class="mb-1 text-main"><a href="#">品牌故事</a></p>
-        <p class="mb-1 text-main"><a href="#">製作工藝</a></p>
-        <p class="mb-1 text-main"><a href="#">永續承諾</a></p>
-      </div>
-      <!-- 客戶支援 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">客戶支援</div>
-        <p class="mb-1 text-main"><a href="#">運送方式</a></p>
-        <p class="mb-1 text-main"><a href="#">退換貨政策</a></p>
-        <p class="mb-1 text-main"><a href="#">訂單查詢</a></p>
-        <p class="mb-1 text-main"><a href="#">聯絡我們</a></p>
-      </div>
-      <!-- 靈感與內容 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">靈感與內容</div>
-        <p class="mb-1 text-main"><a href="#">香調指南</a></p>
-        <p class="mb-1 text-main"><a href="#">節日推薦</a></p>
-        <p class="mb-1 text-main"><a href="#">最新文章</a></p>
-      </div>
-    </div>
-    <div class="d-flex justify-content-between px-3 py-2">
-      <small class="text-xs">Copyright &copy; 2025 Sunday Quiet Company</small>
-      <div>
-        <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="me-2"><i class="bi bi-threads"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===================== JS ===================== -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    /* ============================================================
-       購物車頁面邏輯
-    ============================================================ */
-
-    // ── 金額 Summary（從 cart 讀取並顯示）────────────────────
-    const cart = JSON.parse(localStorage.getItem('cart')) || { items: [], shipping: 0 };
-
-    const count    = cart.items.reduce((sum, item) => sum + item.qty, 0);
-    const subtotal = cart.items.reduce((sum, item) => sum + item.qty * item.price, 0);
-    const shipping = cart.shipping ?? 0;
-    const total    = subtotal + shipping;
-
-    document.querySelector('#shopping-count').innerText = count;
-    document.querySelector('#shopping-sum').innerText   = `$${subtotal.toLocaleString()}`;
-    document.querySelector('#shopping-tax').innerText   = `$${shipping.toLocaleString()}`;
-    document.querySelector('#shopping-total').innerText = `$${total.toLocaleString()}`;
-
-    // ── 寄送資料：還原已儲存的欄位 ──────────────────────────
-    const savedCart = JSON.parse(localStorage.getItem('cart'));
-
-    if (savedCart?.receiver) {
-      const r = savedCart.receiver;
-      document.querySelector('#inputName').value    = r.name    || '';
-      document.querySelector('#inputNumber').value  = r.phone   || '';
-      document.querySelector('#inputTel').value     = r.tel     || '';
-      document.querySelector('#inputEmail').value   = r.email   || '';
-      document.querySelector('#inputCity').value    = r.city    || '';
-      document.querySelector('#inputState').value   = r.state   || '';
-      document.querySelector('#inputZip').value     = r.zip     || '';
-      document.querySelector('#inputAddress2').value = r.address || '';
-    }
-
-    // ── 寄送資料：即時儲存表單變動 ──────────────────────────
-    function saveReceiver() {
-      const current = JSON.parse(localStorage.getItem('cart')) || {};
-      current.receiver = {
-        name:    document.querySelector('#inputName').value,
-        phone:   document.querySelector('#inputNumber').value,
-        tel:     document.querySelector('#inputTel').value,
-        email:   document.querySelector('#inputEmail').value,
-        city:    document.querySelector('#inputCity').value,
-        state:   document.querySelector('#inputState').value,
-        zip:     document.querySelector('#inputZip').value,
-        address: document.querySelector('#inputAddress2').value
-      };
-      localStorage.setItem('cart', JSON.stringify(current));
-    }
-
-    document.querySelectorAll(
-      '#inputName, #inputNumber, #inputTel, #inputEmail, #inputCity, #inputState, #inputZip, #inputAddress2'
-    ).forEach(input => input.addEventListener('input', saveReceiver));
-  </script>
-
+    <!-- ===================== JS ===================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/cart-03.js"></script>
+    <script src="./js/components.js"></script>
 </body>
+
 </html>

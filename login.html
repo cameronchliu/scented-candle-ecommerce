@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sunday Quiet | Login</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- 1. Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- 2. 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- 3. 全站共用樣式 -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/components.js"></script>
 
   <style>
     /* ============================================================
@@ -26,28 +31,65 @@
       color: #4A4A4A;
     }
 
-    .row { height: 100vh; }
+    .row {
+      height: 100vh;
+    }
 
     /* ── 色票 / Token ── */
-    .text-main { color: #4A4A4A; }
-    .text-sub  { color: #A09486; }
-    .text-warm { color: #4A3F35; }
+    .text-main {
+      color: #4A4A4A;
+    }
 
-    .bg-lightcream { background-color: #FDFDFC; }
-    .border-cream  { border-color: #C9C1B5 !important; }
-    .border-soft   { border-color: #D6CEC3 !important; }
-    .bg-warm       { background-color: #4A3F35; }
+    .text-sub {
+      color: #A09486;
+    }
 
-    .bg-btn          { background-color: #F2EEE9; }
-    .bg-btn-hover:hover { background-color: #E8E2D8 !important; }
+    .text-warm {
+      color: #4A3F35;
+    }
+
+    .bg-lightcream {
+      background-color: #FDFDFC;
+    }
+
+    .border-cream {
+      border-color: #C9C1B5 !important;
+    }
+
+    .border-soft {
+      border-color: #D6CEC3 !important;
+    }
+
+    .bg-warm {
+      background-color: #4A3F35;
+    }
+
+    .bg-btn {
+      background-color: #F2EEE9;
+    }
+
+    .bg-btn-hover:hover {
+      background-color: #E8E2D8 !important;
+    }
 
     /* ── 字級 ── */
-    .text-xs { font-size: 11px; }
-    .text-sm { font-size: 14px; }
-    .text-md { font-size: 16px; }
+    .text-xs {
+      font-size: 11px;
+    }
+
+    .text-sm {
+      font-size: 14px;
+    }
+
+    .text-md {
+      font-size: 16px;
+    }
 
     /* ── 左側文案卡片 ── */
-    .logo { min-width: 240px; max-width: 360px; }
+    .logo {
+      min-width: 240px;
+      max-width: 360px;
+    }
 
     .slogan-box {
       max-width: 520px;
@@ -117,8 +159,15 @@
     }
 
     /* ── 文字連結 ── */
-    .link-sq             { color: #A09486; text-decoration: none; }
-    .link-sq:hover       { color: #4A3F35; text-decoration: underline; }
+    .link-sq {
+      color: #A09486;
+      text-decoration: none;
+    }
+
+    .link-sq:hover {
+      color: #4A3F35;
+      text-decoration: underline;
+    }
 
     /* ── 底部社群圖示列 ── */
     .footer-social-bar {

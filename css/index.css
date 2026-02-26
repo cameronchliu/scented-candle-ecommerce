@@ -1,0 +1,115 @@
+/* ============================================================
+   index.html 專屬樣式
+============================================================ */
+
+/* ── icon / 圓形 ── */
+.circle {
+  width: 75px;
+  height: 75px;
+}
+
+.circle-big {
+  width: 120px;
+  height: 120px;
+}
+
+/* ── 說明文字寬度 ── */
+.text-block {
+  max-width: 380px;
+}
+
+@media (max-width: 992px) {
+  .text-block {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-block {
+    max-width: 100%;
+  }
+}
+
+/* ── 橫向介紹小圖 ── */
+.small-img {
+  max-width: 120px;
+}
+
+@media (max-width: 992px) {
+  .small-img {
+    max-width: 160px;
+  }
+}
+
+/* ── 商品縮圖 ── */
+.eight-card {
+  object-fit: cover;
+}
+
+/* ── 標題裝飾線 ── */
+.title-left,
+.title-center {
+  position: relative;
+}
+
+.title-left::after,
+.title-center::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  width: 60px;
+  height: 3px;
+  background: #4A3F35;
+  border-radius: 3px;
+}
+
+.title-left::after {
+  left: 0;
+}
+
+.title-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── 商品介紹 ── */
+.border-right {
+  border-right: 1px solid #A09486;
+}
+
+/* ── 價格表 ── */
+.pricing-table-color {
+  border-color: #E2D8CC;
+}
+
+.pricing-table-color thead th {
+  background-color: #F2EEE9 !important;
+  border-bottom-color: #E2D8CC;
+}
+
+.pricing-table-color tbody td {
+  border-color: #F0E6DA;
+}
+
+/* ── 色票選擇器 ── */
+.color-picker input {
+  display: none;
+}
+
+.input-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+input:checked + .input-circle {
+  border: 2px solid mediumaquamarine;
+}
+
+/* ── 商品卡 hover ── */
+.product-card:hover img {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
