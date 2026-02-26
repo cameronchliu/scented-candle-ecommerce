@@ -1,6 +1,6 @@
-/* ============================================================
-   components.js — 動態載入 Nav 與 Footer
-============================================================ */
+// 自動偵測是本機還是 GitHub Pages
+const isLocal = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+const base = isLocal ? '/' : '/repository名稱/';
 
 function loadComponent(selector, path, callback) {
   fetch(path)
@@ -15,12 +15,10 @@ function loadComponent(selector, path, callback) {
     .catch(err => console.error(err));
 }
 
-// 載入 Nav，完成後重新初始化 Bootstrap Dropdown
-loadComponent('#nav-placeholder', './components/_nav.html', () => {
+loadComponent('#nav-placeholder', `${base}components/_nav.html`, () => {
   document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(el => {
     new bootstrap.Dropdown(el);
   });
 });
 
-// 載入 Footer
-loadComponent('#footer-placeholder', './components/_footer.html');
+loadComponent('#footer-placeholder', `${base}components/_footer.html`);
