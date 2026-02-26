@@ -1,37 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-Hant">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sunday Quiet | Login</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- 1. Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- 2. 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- 3. 全站共用樣式 -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/components.js"></script>
 
   <style>
-    /* ------------------------------------------
-      🎨 Sunday Quiet - 顏色 & 字體統一說明
-    ------------------------------------------
-      主背景：#F7F5F0（Cream）
-      卡片背景：#FDFDFC（Light Cream）
-      主字色：#4A4A4A 深灰
-      次字色：#A09486 奶茶灰
-      重點字：#4A3F35 咖啡深色
-
-      邊框：
-      - 奶油灰 #C9C1B5
-      - 柔灰   #D6CEC3
-
-      按鈕：
-      - 主按鈕底：#F2EEE9
-      - hover：#E8E2D8
-    -------------------------------------------*/
+    /* ============================================================
+       Sunday Quiet — Login 頁面樣式
+    ============================================================ */
 
     body {
       height: 100vh;
@@ -44,7 +35,7 @@
       height: 100vh;
     }
 
-    /* 色票 */
+    /* ── 色票 / Token ── */
     .text-main {
       color: #4A4A4A;
     }
@@ -69,6 +60,10 @@
       border-color: #D6CEC3 !important;
     }
 
+    .bg-warm {
+      background-color: #4A3F35;
+    }
+
     .bg-btn {
       background-color: #F2EEE9;
     }
@@ -77,11 +72,7 @@
       background-color: #E8E2D8 !important;
     }
 
-    .bg-warm {
-      background-color: #4A3F35;
-    }
-
-    /* 字級 */
+    /* ── 字級 ── */
     .text-xs {
       font-size: 11px;
     }
@@ -94,6 +85,7 @@
       font-size: 16px;
     }
 
+    /* ── 左側文案卡片 ── */
     .logo {
       min-width: 240px;
       max-width: 360px;
@@ -109,6 +101,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
+    /* ── 登入卡片 ── */
     .login-card {
       width: min(520px, 92%);
       border-radius: 22px;
@@ -117,6 +110,7 @@
       padding: 36px 26px;
     }
 
+    /* ── 表單 ── */
     .form-control {
       border: 1px solid #C9C1B5;
       background-color: #FDFDFC;
@@ -130,6 +124,7 @@
       box-shadow: 0 0 0 0.2rem rgba(160, 148, 134, 0.18);
     }
 
+    /* ── 社群登入按鈕 ── */
     .social-btn {
       width: 46px;
       height: 46px;
@@ -149,6 +144,7 @@
       color: #4A3F35;
     }
 
+    /* ── 主要按鈕 ── */
     .btn-sq {
       border: 1px solid #C9C1B5;
       background-color: #F2EEE9;
@@ -162,6 +158,7 @@
       color: #4A3F35;
     }
 
+    /* ── 文字連結 ── */
     .link-sq {
       color: #A09486;
       text-decoration: none;
@@ -172,7 +169,8 @@
       text-decoration: underline;
     }
 
-    .abc {
+    /* ── 底部社群圖示列 ── */
+    .footer-social-bar {
       left: 50%;
       bottom: 5%;
       transform: translateX(-50%);
@@ -180,7 +178,7 @@
     }
 
     @media (min-width: 992px) {
-      .abc {
+      .footer-social-bar {
         left: 25%;
         transform: translateX(-25%);
       }
@@ -212,59 +210,68 @@
   <section class="container-fluid position-relative">
     <div class="row">
 
-      <!-- 左側文案（lg 才顯示） -->
+      <!-- ── 左側文案（lg 以上才顯示） ── -->
       <div class="col d-none d-lg-flex flex-column align-items-center justify-content-center">
         <div class="slogan-box">
           <h2 class="fw-bold text-warm mb-2">Scented moments for a calmer day.</h2>
           <div class="text-sub fs-5">Soft light, quiet breath, slower living.</div>
           <div class="text-main text-sm mt-3">
-            Welcome back—let’s make today feel a little softer ☁️
+            Welcome back—let's make today feel a little softer ☁️
           </div>
         </div>
       </div>
 
-      <!-- 右側登入 -->
+      <!-- ── 右側登入卡片 ── -->
       <div class="col d-flex flex-column align-items-center justify-content-center px-2">
         <div class="login-card bg-lightcream">
+
           <div class="text-center">
-            <img src="./img/logo.png" class="logo w-50 mb-3" alt="logo">
+            <img src="./img/logo.png" class="logo w-50 mb-3" alt="Sunday Quiet Logo">
             <div class="text-sub mb-3">Sign in to continue</div>
           </div>
 
+          <!-- 社群登入 -->
           <div class="d-flex justify-content-center mb-4">
-            <a href="" class="social-btn mx-2" aria-label="facebook"><i class="bi bi-facebook fs-5"></i></a>
-            <a href="" class="social-btn mx-2" aria-label="google"><i class="bi bi-google fs-5"></i></a>
-            <a href="" class="social-btn mx-2" aria-label="twitter"><i class="bi bi-twitter fs-5"></i></a>
+            <a href="#" class="social-btn mx-2" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="social-btn mx-2" aria-label="Google"><i class="bi bi-google fs-5"></i></a>
+            <a href="#" class="social-btn mx-2" aria-label="Twitter"><i class="bi bi-twitter fs-5"></i></a>
           </div>
 
           <div class="text-center text-sub text-sm mb-3">or sign in with your email</div>
 
+          <!-- 表單 -->
           <div class="d-flex flex-column w-100">
             <input type="email" class="form-control mb-3" placeholder="name@example.com">
             <input type="password" class="form-control mb-2" placeholder="Password">
 
             <div class="d-flex justify-content-end mb-3">
-              <a href="" class="link-sq text-sm">Forgot password?</a>
+              <a href="#" class="link-sq text-sm">Forgot password?</a>
             </div>
 
             <button type="submit" class="btn btn-sq fw-bold fs-5 w-100">Log in</button>
 
             <div class="text-center text-sub text-sm mt-3">
               New here?
-              <a href="" class="link-sq fw-semibold">Create an account</a>
+              <a href="#" class="link-sq fw-semibold">Create an account</a>
             </div>
           </div>
+
         </div>
       </div>
 
     </div>
 
-    <div class="position-absolute abc d-flex">
-      <a href="" class="footer-social" aria-label="facebook"><i class="bi bi-facebook fs-5"></i></a>
-      <a href="" class="footer-social" aria-label="messenger"><i class="bi bi-messenger fs-5"></i></a>
-      <a href="" class="footer-social" aria-label="instagram"><i class="bi bi-instagram fs-5"></i></a>
+    <!-- ── 底部社群圖示列 ── -->
+    <div class="position-absolute footer-social-bar d-flex">
+      <a href="#" class="footer-social" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
+      <a href="#" class="footer-social" aria-label="Messenger"><i class="bi bi-messenger fs-5"></i></a>
+      <a href="#" class="footer-social" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a>
     </div>
   </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

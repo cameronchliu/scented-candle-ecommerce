@@ -1,0 +1,137 @@
+/* ------------------------------------------
+        🎨 Sunday Quiet - 顏色 & 字體統一說明
+       ------------------------------------------
+       主背景：#F7F5F0（Cream）
+       Nav背景：#FDFDFC（Light Cream）
+       主字色：#4A4A4A 深灰
+       次字色：#A09486 奶茶灰
+       重點字：#4A3F35 咖啡深色
+
+       邊框：
+       - 奶油灰 #C9C1B5
+       - 柔灰   #D6CEC3
+
+       按鈕：
+       - 主按鈕底：#F2EEE9
+       - hover：#E8E2D8
+    -------------------------------------------*/
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #F7F5F0;
+}
+
+/* 色票 */
+.text-main {
+  color: #4A4A4A;
+}
+
+.text-sub {
+  color: #A09486;
+}
+
+.text-warm {
+  color: #4A3F35;
+}
+
+.bg-lightcream {
+  background-color: #FDFDFC;
+}
+
+.border-cream {
+  border-color: #C9C1B5;
+}
+
+.border-soft {
+  border-color: #D6CEC3;
+}
+
+.bg-btn {
+  background-color: #F2EEE9;
+}
+
+.bg-btn-hover:hover {
+  background-color: #E8E2D8 !important;
+}
+
+.bg-warm {
+  background-color: #4A3F35;
+  ;
+}
+
+/* 字級 */
+.text-xs {
+  font-size: 11px;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+.text-md {
+  font-size: 16px;
+}
+
+/* 小圖片 */
+.circle {
+  width: 75px;
+  height: 75px;
+}
+
+/* 下拉箭頭移除 */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* 下拉選單位置修正 */
+.dropdown-menu[data-bs-popper] {
+  left: -130px;
+}
+
+/* nav 字體顏色 */
+.nav-link {
+  color: #4A4A4A;
+}
+
+.nav-link:hover {
+  color: #A09486;
+}
+
+/* input-group 統一顏色 */
+.input-group .btn,
+.input-group .form-control {
+  border-color: #C9C1B5;
+}
+
+.input-group .btn:hover {
+  background-color: #E8E2D8;
+}
+
+/* =========================================== */
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 13.5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #A09486;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* =========================================== */
+
+.my-circle {
+  width: 40px;
+  height: 40px;
+}
+
+.my-progress {
+  width: calc(100% - 2 * 20px - 8px * 2);
+  height: 10px;
+}

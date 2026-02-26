@@ -1,312 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sunday Quiet | Home Page</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
+  <!-- 字體 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* ------------------------------------------
-   🎨 Sunday Quiet - 全站基礎設定
--------------------------------------------*/
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-      background-color: #F7F5F0;
-      /* 主背景：Cream */
-      margin: 0;
-      padding: 0;
-    }
-
-    /* ------------------------------------------
-   色票 / Token 類
--------------------------------------------*/
-    .text-main {
-      color: #4A4A4A;
-      /* 深灰 主文字 */
-    }
-
-    .text-sub {
-      color: #A09486;
-      /* 奶茶灰 次要文字 */
-    }
-
-    .text-warm {
-      color: #4A3F35;
-      /* 咖啡深色 重點字 */
-    }
-
-    .bg-lightcream {
-      background-color: #FDFDFC;
-      /* Nav / Footer 背景 */
-    }
-
-    .border-soft {
-      border-color: #D6CEC3;
-      /* 柔灰：區塊邊框 */
-    }
-
-    .bg-btn {
-      background-color: #F2EEE9 !important;
-      /* 按鈕底色 */
-    }
-
-    .bg-btn-hover:hover {
-      background-color: #E8E2D8 !important;
-      /* 按鈕 hover */
-    }
-
-    /* 如果之後要用更小字體可以留著 */
-    .text-xs {
-      font-size: 11px;
-    }
-
-    /* ------------------------------------------
-   導覽列 Nav
--------------------------------------------*/
-    .nav-link {
-      color: #4A4A4A;
-    }
-
-    .nav-link:hover {
-      color: #A09486;
-    }
-
-    /* 移除 Bootstrap 下拉箭頭 */
-    .dropdown-toggle::after {
-      display: none;
-    }
-
-    /* 控制下拉選單水平位置 */
-    .dropdown-menu[data-bs-popper] {
-      left: -130px;
-    }
-
-    /* ------------------------------------------
-   圖文共用元件
-    -------------------------------------------*/
-
-    /* 三個直向介紹區：圓形 icon 容器 */
-    .circle {
-      width: 75px;
-      height: 75px;
-    }
-
-    .circle-big {
-      width: 120px;
-      height: 120px;
-    }
-
-    /* 限制說明文字寬度（避免一行太長） */
-    .text-block {
-      max-width: 380px;
-    }
-
-    @media (max-width: 992px) {
-      .text-block {
-        max-width: 450px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .text-block {
-        max-width: 100%;
-      }
-    }
-
-    /* 小圖（橫向介紹那三張） */
-    .small-img {
-      max-width: 120px;
-    }
-
-    @media (max-width: 992px) {
-      .small-img {
-        max-width: 160px;
-      }
-    }
-
-    /* 八張商品縮圖 */
-    .eight-card {
-      object-fit: cover;
-    }
-
-    /* 文字左邊那條小線（左對齊版標題） */
-    .title-left {
-      position: relative;
-    }
-
-    .title-left::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -20px;
-      width: 60px;
-      height: 3px;
-      background: #4A3F35;
-      border-radius: 3px;
-    }
-
-    /* 文字下方置中的小線（中間標題用） */
-    .title-center {
-      position: relative;
-    }
-
-    .title-center::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -20px;
-      width: 60px;
-      height: 3px;
-      background: #4A3F35;
-      border-radius: 3px;
-      translate: -50%;
-    }
-
-    /* 商品介紹區：價錢區右邊那條豎線 */
-    .border-right {
-      border-right: 1px solid #A09486;
-    }
-
-    /* ------------------------------------------
-       價格表顏色表
-  -------------------------------------------*/
-
-    /* 表格本體 */
-    .pricing-table-color {
-      border-color: #E2D8CC;
-    }
-
-    /* 表頭 */
-    .pricing-table-color thead th {
-      background-color: #F2EEE9 !important;
-      border-bottom-color: #E2D8CC;
-    }
-
-    /* 內容列顏色 */
-    .pricing-table-color tbody td {
-      border-color: #F0E6DA;
-    }
-
-    /* ------------------------------------------
-   色票選擇器（Color picker）
--------------------------------------------*/
-    .input-circle {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .color-picker input {
-      display: none;
-      /* 隱藏 radio 本體 */
-    }
-
-    /* 勾選的顏色外面加白色描邊 */
-    input:checked+.input-circle {
-      border: 2px solid mediumaquamarine;
-    }
-
-    /* ------------------------------------------
-   八張卡片特效
--------------------------------------------*/
-
-    .product-card:hover img {
-      transform: scale(1.02);
-      transition: 0.3s ease;
-    }
-
-    /* ------------------------------------------
-   Footer 樣式
--------------------------------------------*/
-    footer a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-      color: #A09486;
-    }
-
-    /* ------------------------------------------
-   全站通用小調整
--------------------------------------------*/
-
-    /* 讓 main 裡的超連結預設不要底線
-  （需要底線自己另外加 .text-decoration-underline） */
-    main a {
-      text-decoration: none;
-    }
-
-    /* ===== Optional / 備用工具樣式 ===== */
-
-    /* 如果之後有 input-group（搜尋框、訂閱 Email）再用 */
-    .input-group .btn,
-    .input-group .form-control {
-      border-color: #C9C1B5;
-    }
-
-    .input-group .btn:hover {
-      background-color: #E8E2D8;
-    }
-
-    /* 如果之後需要更細的字級可以打開用
-.text-sm { font-size: 14px; }
-.text-md { font-size: 16px; }
-*/
-
-    /* .border-cream 目前沒用到，如果有需要 Second type 邊框再啟用
-.border-cream {
-  border-color: #C9C1B5;
-}
-*/
-  </style>
+  <!-- 全站共用樣式 -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-  <!--🔹nav導覽列🔹 -->
-  <nav class="navbar navbar-expand-lg bg-lightcream">
-    <div class="container">
-      <a class="navbar-brand" href="./index.html">
-        <img src="./img/logo.png" alt="Bootstrap" width="60" height="60">
-      </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- ===================== NAV ===================== -->
+  <div id="nav-placeholder"></div>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-main">
-          <li class="nav-item me-3"><a class="nav-link" href="#">商店</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">香氛系列</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">品牌故事</a></li>
-          <li class="nav-item me-3"><a class="nav-link" href="#">聯絡我們</a></li>
-          <li class="nav-item me-2"><a class="nav-link" href="./cart-01.html"><i class="bi bi-cart4"></i></a></li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./login.html">Login</a></li>
-              <li><a class="dropdown-item" href="#">Sign up</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Help</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- 🖼️banner大圖＋coursel輪播🛞 -->
+  <!-- ===================== HEADER：Banner 輪播 ===================== -->
   <header>
     <div id="carouselExampleCaptions" class="carousel slide">
       <div class="carousel-indicators">
@@ -317,9 +32,10 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
           aria-label="Slide 3"></button>
       </div>
+
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="w-100" src="./img/banner01.jpg" class="d-block w-100" alt="用香氣定義你的日常片刻" style="max-height: 70vh;">
+          <img class="w-100" src="./img/banner01.jpg" alt="用香氣定義你的日常片刻" style="max-height: 70vh; object-fit: cover;">
           <div class="text-start carousel-caption d-none d-md-block">
             <h2 class="display-1 fw-medium text-white">Slow down, breathe, illuminate.</h2>
             <p class="text-white">為日常留一盞只屬於你的光</p>
@@ -327,7 +43,8 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="w-100" src="./img/banner02.jpg" class="d-block w-100" alt="..." style="max-height: 70vh;">
+          <img class="w-100" src="./img/banner02.jpg" alt="A scent for every quiet moment"
+            style="max-height: 70vh; object-fit: cover;">
           <div class="text-center carousel-caption d-none d-md-block">
             <h2 class="display-1 fw-medium text-white">A scent for every quiet moment.</h2>
             <p>早晨的陽光、午後的獨處、夜晚的放鬆 ☽☁︎
@@ -336,15 +53,16 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="w-100" src="./img/banner03.jpg" class="d-block w-100" alt="..." style="max-height: 70vh;">
+          <img class="w-100" src="./img/banner03.jpg" alt="Let the night slow you down"
+            style="max-height: 70vh; object-fit: cover;">
           <div class="text-end carousel-caption d-none d-md-block">
             <h2 class="display-1 fw-medium text-white">Let the night slow you down.</h2>
-            <p>當世界靜下來，
-              讓香氣接住你。</p>
+            <p>當世界靜下來，讓香氣接住你。</p>
             <button type="button" class="btn btn-outline-light bg-btn-hover btn-lg">為今晚選一款香</button>
           </div>
         </div>
       </div>
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -358,55 +76,59 @@
     </div>
   </header>
 
+  <!-- ===================== MAIN ===================== -->
   <main>
     <div class="container py-5">
-      <!-- 🔹 三個介紹(直) -->
+
+      <!-- ── 三個介紹（直） ── -->
       <section class="py-5">
-        <!-- 字 -->
         <div class="title-center text-center mb-5">
           <h4 class="text-main mb-3">讓香氣，陪你把日子過慢一點</h4>
           <p class="text-sub mx-auto" style="max-width: 560px;">
-            在繁忙的都市節奏中，我們為您捕捉大地的靜謐。每一絲香氣都是一段故事的開端，陪您在居家日常中找回內心的平靜。
+            在繁忙的都市節奏中，我們為您捕捉大地的靜謐。每一絲香氣都是一段故事的開端，
+            陪您在居家日常中找回內心的平靜。
           </p>
         </div>
-        <!-- 圖 -->
         <div class="row py-5 text-center">
-          <div class="mb-5 mb-lg-1 px-4 col-12 col-lg-4 px-3 d-flex flex-column align-items-center">
+          <div class="mb-5 mb-lg-1 px-4 col-12 col-lg-4 d-flex flex-column align-items-center">
             <div class="circle rounded-circle bg-lightcream d-flex justify-content-center align-items-center mb-5">
               <i class="bi bi-leaf fs-3 text-sub"></i>
             </div>
             <h6 class="fw-semibold mb-3">自然萃取 ‧ 純淨無負擔</h6>
             <p class="lh-lg mx-auto text-start text-block">
-              堅持選用 100%天然植物精油與環保大豆蠟作為基底，拒絕添加人工石蠟與塑化劑。我們細心過濾每一道工序，只為確保燃燒時的香氣純粹且不產生黑煙。
+              堅持選用 100%天然植物精油與環保大豆蠟作為基底，拒絕添加人工石蠟與塑化劑。
+              我們細心過濾每一道工序，只為確保燃燒時的香氣純粹且不產生黑煙。
             </p>
             <a href="" class="text-sub mt-auto">認識香材</a>
           </div>
-          <div class="mb-5 mb-lg-1 px-4 col-12 col-lg-4 px-3 d-flex flex-column align-items-center">
+          <div class="mb-5 mb-lg-1 px-4 col-12 col-lg-4 d-flex flex-column align-items-center">
             <div class="circle rounded-circle bg-lightcream d-flex justify-content-center align-items-center mb-5">
               <i class="bi bi-droplet-half fs-3 text-sub"></i>
             </div>
             <h6 class="fw-semibold mb-3">小批量手工灌注</h6>
             <p class="lh-lg mx-auto text-start text-block">
-              捨棄機械化的快速生產，我們堅持以小批量手工製作來控管品質。每一瓶蠟燭都經過職人精準的溫度監測與攪拌，確保精油與大豆蠟完美融合，讓香味擴散更加穩定持久。
+              捨棄機械化的快速生產，我們堅持以小批量手工製作來控管品質。每一瓶蠟燭都經過
+              職人精準的溫度監測與攪拌，確保精油與大豆蠟完美融合，讓香味擴散更加穩定持久。
             </p>
             <a href="" class="text-sub mt-auto">了解製程</a>
           </div>
-          <div class="mb-lg-1 px-4 col-12 col-lg-4 px-3 d-flex flex-column align-items-center">
+          <div class="mb-lg-1 px-4 col-12 col-lg-4 d-flex flex-column align-items-center">
             <div class="circle rounded-circle bg-lightcream d-flex justify-content-center align-items-center mb-5">
               <i class="bi bi-stars fs-3 text-sub"></i>
             </div>
             <h6 class="fw-semibold mb-3">香氣設計，與你的一天共鳴</h6>
             <p class="lh-lg mx-auto text-start text-block">
-              香氣是空間的隱形靈魂。我們針對現代生活的不同節奏，精心調配出一系列情境香氛：從提振精神的木質清晨、適合專注閱讀的草本午後，到幫助身心全然放鬆的薰衣草之夜。
+              香氣是空間的隱形靈魂。我們針對現代生活的不同節奏，精心調配出一系列情境香氛：
+              從提振精神的木質清晨、適合專注閱讀的草本午後，到幫助身心全然放鬆的薰衣草之夜。
             </p>
             <a href="" class="text-sub mt-auto">選擇香氣</a>
           </div>
         </div>
         <button class="btn bg-btn text-main bg-btn-hover d-block mx-auto mt-3" type="button">查看全部商品</button>
       </section>
-      <!-- 🔹 六張圖 -->
+
+      <!-- ── 六張情境圖 ── -->
       <section class="my-5">
-        <!-- 標題 -->
         <div class="row mb-4">
           <div class="col-md-12 col-lg-3 mb-3">
             <h4 class="text-main">香氣，<br>落在生活的每個角落。</h4>
@@ -416,84 +138,65 @@
             到與自己獨處的一杯熱茶。每一張照片，都是一種你可以帶回家的氣味場景。
           </div>
         </div>
-        <!-- 六張圖 -->
         <div class="container my-3">
           <div class="row">
-            <!-- 🔸左 -->
+            <!-- 左欄 -->
             <div class="col">
               <div class="row">
-                <div class="col">
-                  <div class="row">
-                    <!-- 客廳 -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-4x3">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-livingroom.jpg" alt="">
-                      </div>
-                    </div>
-                    <!-- 書桌 -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-4x3">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-desk.jpg" alt="">
-                      </div>
-                    </div>
+                <div class="col p-1">
+                  <div class="ratio ratio-4x3">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-livingroom.jpg" alt="客廳">
                   </div>
-                  <div class="row">
-                    <!-- 床 -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-16x9">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-bed.jpg" alt="">
-                      </div>
-                    </div>
+                </div>
+                <div class="col p-1">
+                  <div class="ratio ratio-4x3">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-desk.jpg" alt="書桌">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col p-1">
+                  <div class="ratio ratio-16x9">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-bed.jpg" alt="臥室">
                   </div>
                 </div>
               </div>
             </div>
-            <!-- 🔸右 -->
+            <!-- 右欄 -->
             <div class="col">
               <div class="row">
-                <div class="col">
-                  <div class="row">
-                    <!-- 浴室（大張） -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-16x9">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-bath.jpg" alt="">
-                      </div>
-                    </div>
+                <div class="col p-1">
+                  <div class="ratio ratio-16x9">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-bath.jpg" alt="浴室">
                   </div>
-                  <div class="row">
-                    <!-- 茶杯 -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-4x3">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-tea.jpg" alt="">
-                      </div>
-                    </div>
-                    <!-- 夜晚角落 -->
-                    <div class="col p-1">
-                      <div class="ratio ratio-4x3">
-                        <img class="w-100 h-100 object-fit-cover" src="./img/scene-night.jpeg" alt="">
-                      </div>
-                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col p-1">
+                  <div class="ratio ratio-4x3">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-tea.jpg" alt="茶杯">
+                  </div>
+                </div>
+                <div class="col p-1">
+                  <div class="ratio ratio-4x3">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/scene-night.jpeg" alt="夜晚角落">
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-      <!-- 🔹 價格表 -->
+
+      <!-- ── 價格表 ── -->
       <section class="py-5">
-        <!-- 標題 -->
         <div class="text-center mb-5">
           <h3 class="mb-4 text-main">價目方案</h3>
           <p class="text-sub mx-auto" style="max-width: 560px;">
             不同香氣，陪你度過不一樣的時刻。<br>
-            從試香入門到儀式感滿滿的禮盒組，
-            挑一個最貼近你生活步調的香氛搭配。
+            從試香入門到儀式感滿滿的禮盒組，挑一個最貼近你生活步調的香氛搭配。
           </p>
         </div>
-        <!-- 表格 -->
-        <!-- 整理樣式 -->
         <div class="mx-auto rounded-5 overflow-hidden shadow-sm bg-lightcream border-soft">
           <div class="table-responsive">
             <table class="table align-middle text-main mb-0 pricing-table-color ps-4">
@@ -512,50 +215,41 @@
                   <td class="py-3 text-secondary-emphasis">50g 迷你蠟燭 × 3 入，任選香氣</td>
                   <td class="py-3 text-secondary-emphasis">第一次認識 Sunday Quiet，想先試試看幾種味道。</td>
                   <td class="py-3 text-secondary-emphasis text-end">$680</td>
-                  <td class="py-3 text-secondary-emphasis text-center">
-                    <input class="form-check-input" type="radio" name="pricing-plan">
-                  </td>
+                  <td class="py-3 text-center"><input class="form-check-input" type="radio" name="pricing-plan"></td>
                 </tr>
                 <tr>
                   <td class="py-3 text-secondary-emphasis">日常款</td>
                   <td class="py-3 text-secondary-emphasis">主系列蠟燭 200g × 1 入</td>
                   <td class="py-3 text-secondary-emphasis">每天點一小時，陪你讀書、追劇或寫筆記的固定香氣。</td>
                   <td class="py-3 text-secondary-emphasis text-end">$980</td>
-                  <td class="py-3 text-secondary-emphasis text-center">
-                    <input class="form-check-input" type="radio" name="pricing-plan">
-                  </td>
+                  <td class="py-3 text-center"><input class="form-check-input" type="radio" name="pricing-plan"></td>
                 </tr>
                 <tr>
                   <td class="py-3 text-secondary-emphasis">雙入禮盒</td>
                   <td class="py-3 text-secondary-emphasis">200g 蠟燭 × 2 入，附禮盒包裝</td>
                   <td class="py-3 text-secondary-emphasis">送禮或情侶、室友一起分享兩種不同香調。</td>
                   <td class="py-3 text-secondary-emphasis text-end">$1,880</td>
-                  <td class="py-3 text-secondary-emphasis text-center">
-                    <input class="form-check-input" type="radio" name="pricing-plan">
-                  </td>
+                  <td class="py-3 text-center"><input class="form-check-input" type="radio" name="pricing-plan"></td>
                 </tr>
                 <tr>
                   <td class="py-3 text-secondary-emphasis">夜晚儀式組</td>
                   <td class="py-3 text-secondary-emphasis">200g 蠟燭 × 3 入，附火柴盒與收納棉袋</td>
                   <td class="py-3 text-secondary-emphasis">為自己設計一套專屬夜間儀式：洗澡、保養到睡前的完整香氣流程。</td>
                   <td class="py-3 text-secondary-emphasis text-end">$2,680</td>
-                  <td class="py-3 text-secondary-emphasis text-center">
-                    <input class="form-check-input" type="radio" name="pricing-plan">
-                  </td>
+                  <td class="py-3 text-center"><input class="form-check-input" type="radio" name="pricing-plan"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <!-- 鈕 -->
         <div class="d-flex justify-content-between mt-4">
           <a href="" class="text-sub ms-2">了解容量與燃燒時間</a>
           <button type="button" class="btn bg-btn bg-btn-hover text-main">前往挑選香氛</button>
         </div>
       </section>
-      <!-- 🔹 四張卡片 -->
+
+      <!-- ── 四張卡片 ── -->
       <section class="my-5">
-        <!-- 標題 -->
         <div class="row mb-5">
           <div class="col-md-12 col-lg-3 mb-3">
             <h4 class="title-left">香氣與日常，從這裡開始</h4>
@@ -564,21 +258,20 @@
             「 不只是點燃一顆蠟燭，而是打開一天的節奏與情緒。用香氣打造小小儀式感，替生活添一些柔軟與從容。 」
           </div>
         </div>
-        <!-- 卡片區 -->
         <div class="row g-4" id="card-list"></div>
       </section>
-      <!-- 🔹 三個介紹(橫) -->
+
+      <!-- ── 三個介紹（橫） ── -->
       <section class="mb-5">
-        <!-- 一行 -->
+        <!-- 運送 -->
         <div class="row mx-auto my-2 align-items-center" style="max-width: 1000px;">
           <div class="col-sm-12 col-lg-2 mb-4 mb-lg-0">
-            <!-- icon -->
             <div
               class="circle-big rounded-circle bg-lightcream text-sub shadow-sm mx-auto mb-md-3 d-flex justify-content-center align-items-center">
               <i class="bi bi-truck fs-2"></i>
             </div>
           </div>
-          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5 ">
+          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5">
             <h6 class="text-main fw-bold">幾天可以收到？</h6>
             <p class="text-warm">現貨商品會在 2–3 個工作天內出貨，出貨後約 1–2 天送達。
               若有客製刻字或大量訂購，我們會在下單後以信件再和你確認出貨時間。</p>
@@ -586,17 +279,15 @@
           </div>
           <hr>
         </div>
-        <!-- 一行 -->
+        <!-- 禮盒 -->
         <div class="row mx-auto my-2 align-items-center" style="max-width: 1000px;">
-          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5 ">
+          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5">
             <h6 class="text-main fw-bold">每一盒都可以是禮物</h6>
             <p class="text-warm mb-md-3 d-block">所有蠟燭都會附上 緩衝包材與品牌小卡。
-              若是送禮，可以在結帳備註留下「想說的話」，
-              我們會幫你用溫柔字體寫在卡片上，一起放進盒裡。</p>
+              若是送禮，可以在結帳備註留下「想說的話」，我們會幫你用溫柔字體寫在卡片上，一起放進盒裡。</p>
             <a class="text-sub" href="">看禮盒與卡片示意</a>
           </div>
           <div class="col-sm-12 col-lg-2 mb-4 mb-lg-0">
-            <!-- icon -->
             <div
               class="circle-big rounded-circle bg-lightcream text-sub shadow-sm mx-auto mb-md-3 d-flex justify-content-center align-items-center">
               <i class="bi bi-gift fs-2"></i>
@@ -604,35 +295,31 @@
           </div>
           <hr>
         </div>
-        <!-- 一行 -->
+        <!-- 退換貨 -->
         <div class="row mx-auto my-2 align-items-center" style="max-width: 1000px;">
-          <div class="col-sm-12 col-lg-2 mb-4 mb-lg-0 mt-md-3 ">
-            <!-- icon -->
+          <div class="col-sm-12 col-lg-2 mb-4 mb-lg-0 mt-md-3">
             <div
               class="circle-big rounded-circle bg-lightcream text-sub shadow-sm mx-auto mb-md-3 d-flex justify-content-center align-items-center">
               <i class="bi bi-shield-check fs-2"></i>
             </div>
           </div>
-          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5 ">
+          <div class="col-sm-12 col-lg-10 mb-4 my-lg-5">
             <h6 class="text-main fw-bold">香氣如果不合，怎麼辦？</h6>
-            <p class="text-warm">收到商品如有 破損、漏蠟或嚴重色差，
-              請在 7 天內拍照私訊或來信，
-              我們會協助換貨或退款。
-              若只是第一次用蠟燭有疑問，也非常歡迎你問我們。</p>
+            <p class="text-warm">收到商品如有 破損、漏蠟或嚴重色差，請在 7 天內拍照私訊或來信，
+              我們會協助換貨或退款。若只是第一次用蠟燭有疑問，也非常歡迎你問我們。</p>
             <a class="text-sub" href="">查看退換貨與保固細節&nbsp;<i class="bi bi-arrow-right"></i></a>
           </div>
           <hr>
         </div>
         <button type="button" class="btn bg-btn bg-btn-hover text-main d-block mx-auto mt-4 mb-5">查看完整購物說明</button>
       </section>
-      <!-- 🔹 大圖+選色 -->
+
+      <!-- ── 大圖 + 選色 ── -->
       <section class="my-5">
         <div class="row">
-          <!-- 大圖 -->
           <div class="col-lg-6 p-2 mt-5">
-            <img class="w-100 d-block mx-auto" src="./img/big-img.png">
+            <img class="w-100 d-block mx-auto" src="./img/big-img.png" alt="Twilight Bloom 暮色花園蠟燭">
           </div>
-          <!-- 文字區 -->
           <div class="col-lg-6 p-5 p-xl-5 d-flex flex-column gap-3 gap-xl-4">
             <div>
               <div class="text-warm mb-1">Sunday Quiet</div>
@@ -643,15 +330,14 @@
                 <i class="text-warning bi bi-star-fill"></i>
                 <i class="text-warning bi bi-star-fill"></i>
                 <i class="text-warning bi bi-star"></i>
-                <span class="border-right small">&nbsp;&nbsp;&nbsp;&nbsp;112 Reveiws&nbsp;&nbsp;&nbsp;</span>
-                <a class="text-main" href=""> <i class="mx-1 bi bi-facebook"></i></a>
-                <a class="text-main" href=""><i class="mx-1 bi bi-twitter"></i></a>
-                <a class="text-main" href=""><i class="mx-1 bi bi-chat-fill"></i></a>
+                <span class="border-right small">&nbsp;&nbsp;&nbsp;&nbsp;112 Reviews&nbsp;&nbsp;&nbsp;</span>
+                <a class="text-main" href="#"><i class="mx-1 bi bi-facebook"></i></a>
+                <a class="text-main" href="#"><i class="mx-1 bi bi-twitter"></i></a>
+                <a class="text-main" href="#"><i class="mx-1 bi bi-chat-fill"></i></a>
               </div>
-
             </div>
             <p class="w-100 text-main mb-2">香味靈感來自傍晚散步後的涼風與白花香。</p>
-            <ul class="text-sub my-0" style="list-style-type: none;">
+            <ul class="text-sub my-0" style="list-style-type: none; padding: 0;">
               <li>前調 ｜ 佛手柑、黑加侖</li>
               <li>中調 ｜ 茉莉、白茶</li>
               <li>後調 ｜ 雪松、麝香</li>
@@ -660,19 +346,16 @@
               <i class="bi bi-check"> &nbsp;適合閱讀、夜晚放鬆</i>
               <i class="bi bi-check"> 不嗆鼻、低煙</i>
             </div>
-
             <p class="text-main">
               在夜色落下之前的那段靜謐時光，我們收集白花的香氣、微風吹拂的溫度，封存於這一盞香蠟。
               點亮它，就像替房間按下静音鍵，用光與香陪你熬過最想留在自己的時刻。
-
             </p>
-
             <div class="d-flex gap-2 align-items-center">
               <span class="text-sub">容器顏色：</span>
               <div class="color-picker me-4">
                 <label>
                   <input type="radio" name="color" checked>
-                  <span class="input-circle mx-1" style="background-color:white;"></span>
+                  <span class="input-circle mx-1" style="background-color: white;"></span>
                 </label>
                 <label>
                   <input type="radio" name="color">
@@ -701,108 +384,33 @@
           </div>
         </div>
       </section>
-      <!-- 🔹 八張卡片 -->
+
+      <!-- ── 八張商品卡片 ── -->
       <section>
-        <div id="shopping-list" class="row g-5 justify-content-center">
-          <!-- 卡 -->
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/CitrusDawn.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              柑橘 / 葡萄柚 / 白花
-            </small>
-            <h6 class="fw-bold text-main">柑橘晨光 Citrus Dawn</h6>
-            <p class="text-warm">$650</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/SeaBreeze.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              海鹽 / 迷迭香 / 白松木
-            </small>
-            <h6 class="fw-bold text-main">湖岸海鹽 Sea Breeze</h6>
-            <p class="text-warm">$650</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/WarmCedar.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              雪松木 / 琥珀 / 香根草
-            </small>
-            <h6 class="fw-bold text-main">木質溫室 Warm Cedar</h6>
-            <p class="text-warm">$690</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/TwilightBloom.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              薰衣草 / 白花 / 琥珀
-            </small>
-            <h6 class="fw-bold text-main">暮色花園 Twilight Bloom</h6>
-            <p class="text-warm">$720</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/AutumnFig.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              無花果 / 黑加侖 / 香草
-            </small>
-            <h6 class="fw-bold text-main">秋日無花果 Autumn Fig</h6>
-            <p class="text-warm">$690</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/WhiteTeaMist.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              白茶 / 竹 / 麝香
-            </small>
-            <h6 class="fw-bold text-main">白茶晨霧 White Tea Mist</h6>
-            <p class="text-warm">$680</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/ForestWhisper.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              松木 / 苔蘚 / 雪松
-            </small>
-            <h6 class="fw-bold text-main">黎明森林 Forest Whisper</h6>
-            <p class="text-warm">$690</p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="mb-3 text-center p-1"> <img class="w-100 eight-card img-fluid" src="./img/RoseDusk.png">
-            </div>
-            <small class="text-sub d-inline-block mb-2">
-              大馬士革玫瑰 / 雨後泥土 / 白麝香
-            </small>
-            <h6 class="fw-bold text-main">玫瑰暮雨 Rose Dusk</h6>
-            <p class="text-warm">$720</p>
-          </div>
-        </div>
+        <div id="shopping-list" class="row g-5 justify-content-center"></div>
       </section>
-    </div>
-    <!-- 🔹 地圖 -->
+
+    </div><!-- /.container -->
+
+    <!-- ── 地圖 + 聯絡表單 ── -->
     <div class="container-fluid p-0">
       <div class="position-relative">
-        <!-- 地圖本尊 -->
         <iframe class="w-100"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1863640.2816812566!2d118.34610057251345!3d24.174453234170613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346916380b877075%3A0x4c9665c5dba65b36!2z6Ie65Lit5Lit5aSu5YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1766200642307!5m2!1szh-TW!2stw"
-          width="600" height="550" style="border:0;filter: grayscale(1) contrast(1.2) opacity(0.7);" allowfullscreen=""
+          width="600" height="550" style="border: 0; filter: grayscale(1) contrast(1.2) opacity(0.7);" allowfullscreen
           loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-        <!-- 表單 -->
         <div class="mx-4 rounded p-4 w-25 position-absolute top-50 translate-middle-y end-0 bg-lightcream">
           <h5 class="text-main fs-4">Contact Us</h5>
           <div class="text-warm">
-            <p>有任何關於香氛、訂單或合作的想法，
-              都歡迎在這裡留下訊息。</p>
+            <p>有任何關於香氛、訂單或合作的想法，都歡迎在這裡留下訊息。</p>
             <div class="mb-3 text-sub">
-              <label for="exampleFormControlInput1" class="form-label">Email</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="your@email.com">
+              <label for="contactEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="contactEmail" placeholder="your@email.com">
             </div>
             <div class="mb-3 text-sub">
-              <label for="exampleFormControlTextarea1" class="form-label">Your message</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                placeholder="想跟我們說些什麼？"></textarea>
+              <label for="contactMessage" class="form-label">Your message</label>
+              <textarea class="form-control" id="contactMessage" rows="3" placeholder="想跟我們說些什麼？"></textarea>
             </div>
             <div class="d-grid gap-2 mb-2">
               <button class="btn bg-btn bg-btn-hover" type="button">送出</button>
@@ -814,224 +422,17 @@
     </div>
   </main>
 
-  <!-- 🔻 FOOTER -->
-  <footer class="container-fluid w-100 bg-lightcream pt-5 pb-2">
-    <div class="row justify-content-md-center align-items-start text-center text-lg-start py-5">
-      <!-- 🔸左側 Logo + 文案 -->
-      <div class="col-12 col-md-12 col-lg-4 mb-4 mt-3 mb-lg-0">
-        <div class="d-flex justify-content-center align-items-center">
-          <img src="./img/logo.png" alt="Bootstrap" width="40" height="40">
-          <span class="ms-2 fw-semibold text-main">SundayQuite</span>
-        </div>
-        <p class="text-center text-warm mx-auto my-2" style="max-width: 260px;">
-          <small>Soft light, quiet breath, slower living.</small><br>
-          <small>Scented moments for a calmer day.</small>
-        </p>
-      </div>
-      <!-- 🔸欄位 1 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">商品分類</div>
-        <p class="mb-1 text-main"><a href="#">經典香氛蠟燭</a></p>
-        <p class="mb-1 text-main"><a href="#">居家擴香</a></p>
-        <p class="mb-1 text-main"><a href="#">禮盒組</a></p>
-      </div>
-      <!-- 🔸欄位 2 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">關於品牌</div>
-        <p class="mb-1 text-main"><a href="#">品牌故事</a></p>
-        <p class="mb-1 text-main"><a href="#">製作工藝</a></p>
-        <p class="mb-1 text-main"><a href="#">永續承諾</a></p>
-      </div>
-      <!-- 🔸欄位 3 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">客戶支援</div>
-        <p class="mb-1 text-main"><a href="#">運送方式</a></p>
-        <p class="mb-1 text-main"><a href="#">退換貨政策</a></p>
-        <p class="mb-1 text-main"><a href="#">訂單查詢</a></p>
-        <p class="mb-1 text-main"><a href="#">聯絡我們</a></p>
-      </div>
-      <!-- 🔸欄位 4 -->
-      <div class="col-12 col-md-4 col-lg-2 fw-normal mb-3 py-2 mb-lg-0">
-        <div class="fs-5 mb-3 fw-light text-warm">靈感與內容</div>
-        <p class="mb-1 text-main"><a href="#">香調指南</a></p>
-        <p class="mb-1 text-main"><a href="#">節日推薦</a></p>
-        <p class="mb-1 text-main"><a href="#">最新文章</a></p>
-      </div>
-    </div>
-    <!-- 🐈‍⬛ 商標 -->
-    <div class="d-flex justify-content-between px-3 py-2">
-      <small class="text-xs">Copyright © 2025 SundayQuite Company</small>
-      <div>
-        <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="me-2"><i class="bi bi-threads"></i></a>
-      </div>
-    </div>
-  </footer>
+  <!-- ===================== FOOTER ===================== -->
+  <div id="footer-placeholder"></div>
 
-  <!-- 🧡 JS -->
+  <!-- JS  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
-
-  <!------------------------⬇️ 四張卡片JS----------------------->
-  <script>
-
-    // 1.建立一個物件，以存放HTML卡片中的資料
-    let cards = [
-      {
-        'img': './img/four-card-1.jpeg',
-        'smallTitle': '用香調選，找到自己的步調',
-        'title': '找到你的第一款香',
-        'description': '從柑橘、花香、木質，到海鹽的中性氣息。想像你最常出現的時刻：早晨通勤、夜晚閱讀、睡前放鬆。'
-      },
-      {
-        'img': './img/four-card-2.jpeg',
-        'smallTitle': '正確點蠟，香氣才完整',
-        'title': '第一次點燃很重要',
-        'description': '第一次點燃時，讓蠟面融成一整片，避免形成「蠟洞」。每次燃燒建議控制在 3–4 小時，味道會更柔和、乾淨。'
-      },
-      {
-        'img': './img/four-card-3.png',
-        'smallTitle': '儀式感有了，安全更不能少',
-        'title': '安全使用',
-        'description': '將蠟燭放在穩固、耐熱的桌面，遠離窗簾與紙張。熄滅前再確認一次周圍環境，放心享受每一次點蠟儀式。'
-      },
-      {
-        'img': './img/four-card-4.jpeg',
-        'smallTitle': '香氣是日常的小陪伴',
-        'title': '讓香氣住進日常',
-        'description': '一杯咖啡、一首輕音樂、一盞柔和燭光，就是屬於你的片刻空白。點起蠟燭，替今天劃下一個慢下來的界線'
-      }
-    ]
-
-    const cardlist = document.querySelector('#card-list');
-    // 把 cardList 的 HTML 都先資料清空
-    cardlist.innerHTML += '';
-
-    // 2.跑迴圈筆資料都讀進去
-    cards.forEach(item => {
-      cardlist.innerHTML += `
-      <div class="col-sm-12 col-md-6 col-xl-3" >
-        <div class="card p-4 h-100">
-          <div class="ratio ratio-16x9 overflow-hidden">
-            <img class="rounded object-fit-cover" src="${item.img}">
-          </div>
-          <div class="card-body px-3 px-xl-1 px-xxl-3">
-            <small class="text-sub">${item.smallTitle}</small>
-            <h5 class="card-title mt-2 mb-3 text-main fw-bold">${item.title}</h5>
-            <p class="card-text text-warm lh-lg">${item.description}</p>
-          </div>
-        </div>
-      </div >
-      `
-    });
-
-  </script>
-  <!------------------------⬇️ 八張卡片JS----------------------->
-  <script>
-    // 把卡片的資料都丟進陣列中
-    let shoppingList = [
-      {
-        "img": "./img/CitrusDawn.png",
-        "tag": "柑橘 / 葡萄柚 / 白花",
-        "title": "柑橘晨光 Citrus Dawn",
-        "price": "650.00"
-      },
-      {
-        "img": "./img/SeaBreeze.png",
-        "tag": "海鹽 / 迷迭香 / 白松木",
-        "title": "湖岸海鹽 Sea Breeze",
-        "price": "650.00"
-      },
-      {
-        "img": "./img/WarmCedar.png",
-        "tag": "雪松木 / 琥珀 / 香根草",
-        "title": "木質溫室 Warm Cedar",
-        "price": "690.00"
-      },
-      {
-        "img": "./img/TwilightBloom.png",
-        "tag": "薰衣草 / 白花 / 琥珀",
-        "title": "暮色花園 Twilight Bloom",
-        "price": "720.00"
-      },
-      {
-        "img": "./img/AutumnFig.png",
-        "tag": "無花果 / 黑加侖 / 香草",
-        "title": "秋日無花果 Autumn Fig",
-        "price": "690.00"
-      },
-      {
-        "img": "./img/WhiteTeaMist.png",
-        "tag": "白茶 / 竹 / 麝香",
-        "title": "白茶晨霧 White Tea Mist",
-        "price": "680.00"
-      },
-      {
-        "img": "./img/ForestWhisper.png",
-        "tag": "松木 / 苔蘚 / 雪松",
-        "title": "黎明森林 Forest Whisper",
-        "price": "690.00"
-      },
-      {
-        "img": "./img/RoseDusk.png",
-        "tag": "大馬士革玫瑰 / 雨後泥土 / 白麝香",
-        "title": "玫瑰暮雨 Rose Dusk",
-        "price": "720.00"
-      },
-    ]
-
-    const shoppintList = document.querySelector('#shopping-list');
-
-    shoppintList.innerHTML = '';
-    shoppingList.forEach(item => {
-      shoppintList.innerHTML += `
-      <div class="col-12 col-md-6 col-lg-3" >
-            <div class="mb-3 text-center p-1">
-              <img class="w-100 eight-card img-fluid" src="${item.img}">
-            </div>
-            <small class="text-sub d-inline-block mb-2">${item.tag}</small>
-            <h6 class="card-title fw-bold text-main">${item.title}</h6>
-            <div class="d-flex justify-content-between align-items-center mt-3">            
-                <p class="text-warm m-0">$${item.price}</p>
-                <button type="button" class="btn btn-sm bg-btn bg-btn-hover shopping-btn" data-shoppingname="${item.title}">加入購物車</button>
-            </div>
-      </div>
-      `
-    });
-  </script>
-  <!----------------⬇️ 把所有的八張卡片資料帶到後面-------------->
-  <script>
-    localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
-  </script>
-  <!----------------⬇️ 把點擊的資料記錄下來，並帶到後面-------------->
-  <script>
-    let shoppingBtns = document.querySelectorAll('.shopping-btn');
-    let shopping = [];
-
-    shoppingBtns.forEach(item => {
-      // 每次點擊【加入購物車】按鈕時
-      item.addEventListener('click', function () {
-        // 先判斷是否重複點擊同個商品，！意思是如果沒有的話
-        if (!shopping.includes(item.dataset.shoppingname)) {
-          // 就把這商品用 push 新增進去陣列中
-          shopping.push(item.dataset.shoppingname);
-        };
-
-        // 重新把更新過的shopping陣列轉JSON檔後塞進抽屜
-        localStorage.setItem('shopping', JSON.stringify(shopping));
-      })
-      // 按鈕點擊事件結束
-
-    })
-
-
-
-  </script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/components.js"></script>
 
 </body>
 
 </html>
-
-<!-- 99幾快一千行 變成940行左右 -->
