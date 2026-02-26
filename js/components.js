@@ -1,6 +1,6 @@
-// 自動偵測是本機還是 GitHub Pages
 const isLocal = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
-const base = isLocal ? '/' : '/repository名稱/';
+const base = isLocal ? './' : '/scented-candle-ecommerce/';
+
 
 function loadComponent(selector, path, callback) {
   fetch(path)
