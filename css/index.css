@@ -30,6 +30,23 @@
   }
 }
 
+/* ── 輪播圖 ── */
+
+.carousel-item img {
+  height: 75vh;
+  object-fit: cover;
+  object-position: center;
+  /* 可調整焦點，例如 top / bottom */
+}
+
+@media (max-width:768px) {
+  .carousel-item img {
+    height: 60vh;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
 /* ── 橫向介紹小圖 ── */
 .small-img {
   max-width: 120px;
@@ -92,6 +109,7 @@
 }
 
 @media (max-width: 576px) {
+
   .pricing-table-color td,
   .pricing-table-color th {
     font-size: 0.75rem;
@@ -123,17 +141,22 @@ input:checked+.input-circle {
   transition: transform 0.3s ease;
 }
 
-.carousel-item img {
-  height: 75vh;
-  object-fit: cover;
-  object-position: center;
-  /* 可調整焦點，例如 top / bottom */
+/* ── 回饋表單RWD ── */
+.contact-form-overlay {
+  width: 90%;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
-@media (max-width:768px) {
-  .carousel-item img {
-    height: 60vh;
-    object-fit: cover;
-    object-position: center;
+@media (min-width: 992px) {
+  .contact-form-overlay {
+    width: 25% !important;
+    position: absolute !important;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-top: 0;
   }
 }
