@@ -91,6 +91,15 @@
   border-color: #F0E6DA;
 }
 
+@media (max-width: 576px) {
+  .pricing-table-color td,
+  .pricing-table-color th {
+    font-size: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
 /* ── 色票選擇器 ── */
 .color-picker input {
   display: none;
