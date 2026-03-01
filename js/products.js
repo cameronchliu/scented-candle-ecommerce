@@ -34,14 +34,14 @@ const cards = [
 
 /* ── 八張商品卡片資料 ── */
 const shoppingList = [
-  { img: './img/CitrusDawn.png',    tag: '柑橘 / 葡萄柚 / 白花',            title: '柑橘晨光 Citrus Dawn',      price: '650' },
-  { img: './img/SeaBreeze.png',     tag: '海鹽 / 迷迭香 / 白松木',           title: '湖岸海鹽 Sea Breeze',       price: '650' },
-  { img: './img/WarmCedar.png',     tag: '雪松木 / 琥珀 / 香根草',           title: '木質溫室 Warm Cedar',       price: '690' },
-  { img: './img/TwilightBloom.png', tag: '薰衣草 / 白花 / 琥珀',            title: '暮色花園 Twilight Bloom',   price: '720' },
-  { img: './img/AutumnFig.png',     tag: '無花果 / 黑加侖 / 香草',           title: '秋日無花果 Autumn Fig',     price: '690' },
-  { img: './img/WhiteTeaMist.png',  tag: '白茶 / 竹 / 麝香',               title: '白茶晨霧 White Tea Mist',  price: '680' },
-  { img: './img/ForestWhisper.png', tag: '松木 / 苔蘚 / 雪松',              title: '黎明森林 Forest Whisper',  price: '690' },
-  { img: './img/RoseDusk.png',      tag: '大馬士革玫瑰 / 雨後泥土 / 白麝香',  title: '玫瑰暮雨 Rose Dusk',        price: '720' }
+  { img: './img/CitrusDawn.png', tag: '柑橘 / 葡萄柚 / 白花', title: '柑橘晨光 Citrus Dawn', price: '650' },
+  { img: './img/SeaBreeze.png', tag: '海鹽 / 迷迭香 / 白松木', title: '湖岸海鹽 Sea Breeze', price: '650' },
+  { img: './img/WarmCedar.png', tag: '雪松木 / 琥珀 / 香根草', title: '木質溫室 Warm Cedar', price: '690' },
+  { img: './img/TwilightBloom.png', tag: '薰衣草 / 白花 / 琥珀', title: '暮色花園 Twilight Bloom', price: '720' },
+  { img: './img/AutumnFig.png', tag: '無花果 / 黑加侖 / 香草', title: '秋日無花果 Autumn Fig', price: '690' },
+  { img: './img/WhiteTeaMist.png', tag: '白茶 / 竹 / 麝香', title: '白茶晨霧 White Tea Mist', price: '680' },
+  { img: './img/ForestWhisper.png', tag: '松木 / 苔蘚 / 雪松', title: '黎明森林 Forest Whisper', price: '690' },
+  { img: './img/RoseDusk.png', tag: '大馬士革玫瑰 / 雨後泥土 / 白麝香', title: '玫瑰暮雨 Rose Dusk', price: '720' }
 ];
 
 /* ── 渲染四張文章卡片 ── */
@@ -89,9 +89,9 @@ localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
 /* ── 加入購物車按鈕事件 ── */
 document.querySelectorAll('.shopping-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const title    = btn.dataset.shoppingname;
-    const cart     = getCart();
-    const product  = shoppingList.find(item => item.title === title);
+    const title = btn.dataset.shoppingname;
+    const cart = getCart();
+    const product = shoppingList.find(item => item.title === title);
     const existing = cart.items.find(item => item.title === title);
 
     if (existing) {
@@ -100,14 +100,15 @@ document.querySelectorAll('.shopping-btn').forEach(btn => {
       cart.items.push({
         title: product.title,
         price: Number(product.price),
-        img:   product.img,
-        tag:   product.tag,
-        qty:   1
+        img: product.img,
+        tag: product.tag,
+        qty: 1
       });
     }
 
     saveCart(cart);
-    showToast(`${title} 已加入購物車`);  // ← 加這行
+    showToast(`${title} 已加入購物車`);
+    updateCartCount();
   });
 });
 
@@ -115,9 +116,9 @@ document.querySelectorAll('.shopping-btn').forEach(btn => {
 const featuredBtn = document.querySelector('#featured-add-btn');
 if (featuredBtn) {
   featuredBtn.addEventListener('click', () => {
-    const title    = featuredBtn.dataset.shoppingname;
-    const cart     = getCart();
-    const product  = shoppingList.find(item => item.title === title);
+    const title = featuredBtn.dataset.shoppingname;
+    const cart = getCart();
+    const product = shoppingList.find(item => item.title === title);
     const existing = cart.items.find(item => item.title === title);
 
     if (!product) return;
@@ -128,14 +129,15 @@ if (featuredBtn) {
       cart.items.push({
         title: product.title,
         price: Number(product.price),
-        img:   product.img,
-        tag:   product.tag,
-        qty:   1
+        img: product.img,
+        tag: product.tag,
+        qty: 1
       });
     }
 
     saveCart(cart);
     showToast(`${title} 已加入購物車`);
+    updateCartCount();
   });
 }
 
@@ -145,3 +147,16 @@ function showToast(message) {
   document.querySelector('#cart-toast-msg').textContent = message;
   bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 2000 }).show();
 }
+
+/* ── 更新懸浮購物車數量 ── */
+function updateCartCount() {
+  const cart = getCart();
+  const count = cart.items.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.querySelector('#floating-cart-count');
+  if (!badge) return;
+  badge.textContent = count;
+  badge.style.display = count === 0 ? 'none' : 'inline';
+}
+
+/* ── 初始化購物車數量 ── */
+updateCartCount();

@@ -160,3 +160,11 @@ input:checked+.input-circle {
     margin-top: 0;
   }
 }
+
+/* ── 購物車入口 ── */
+#floating-cart-btn {
+  width: 56px;
+  height: 56px;
+  z-index: 9998;
+  text-decoration: none;
+}
