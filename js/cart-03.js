@@ -6,18 +6,18 @@
 /* ── 付款與運送方式對照表 ── */
 const paymentLabels = {
   'payment-credit': '信用卡付款',
-  'payment-atm':    '網路 ATM',
-  'payment-cvs':    '超商代碼'
+  'payment-atm': '網路 ATM',
+  'payment-cvs': '超商代碼'
 };
 
 const shippingLabels = {
   'shipping-home': '黑貓宅配',
-  'shipping-cvs':  '超商店到店'
+  'shipping-cvs': '超商店到店'
 };
 
 /* ── 顯示付款與運送方式 ── */
 const summaryEl = document.querySelector('#order-summary');
-const cart      = getCart();
+const cart = getCart();
 
 if (cart.payment || cart.shipping_method) {
   summaryEl.innerHTML = `
