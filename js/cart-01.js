@@ -15,8 +15,8 @@ let nowshopping = (savedCart.items || []).map(ci => {
   return {
     title: ci.title,
     price: Number(ci.price ?? full?.price ?? 0),
-    img:   ci.img  ?? full?.img  ?? '',
-    tag:   ci.tag  ?? full?.tag  ?? '',
+    img: ci.img ?? full?.img ?? '',
+    tag: ci.tag ?? full?.tag ?? '',
     total: Number(ci.qty ?? 1)     // qty（cart）→ total（畫面用）
   };
 });
@@ -51,6 +51,9 @@ if (nowshopping.length === 0) {
             <button class="btn btn-click" data-calculate="1">+</button>
           </div>
           <div class="text-main">💲 ${Number(item.price).toLocaleString()}</div>
+          <button class="btn btn-delete text-sub" data-shoppingname="${item.title}">
+            <i class="bi bi-trash3"></i>
+          </button>
         </div>
       </div>
       <hr>
@@ -64,7 +67,7 @@ document.querySelectorAll('.btn-click').forEach(btn => {
     const input = btn.parentNode.children[1];
     const title = input.dataset.shoppingname;
     const delta = parseInt(btn.dataset.calculate, 10);
-    let   qty   = parseInt(input.value, 10) + delta;
+    let qty = parseInt(input.value, 10) + delta;
     if (qty < 1) qty = 1;
 
     input.value = qty;
@@ -80,11 +83,37 @@ document.querySelectorAll('.btn-click').forEach(btn => {
   });
 });
 
+/* ── 刪除商品 ── */
+document.querySelectorAll('.btn-delete').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const title = btn.dataset.shoppingname;
+
+    // 從 nowshopping 移除
+    nowshopping = nowshopping.filter(item => item.title !== title);
+
+    // 移除畫面上對應的列（btn → div.d-flex → hr）
+    const row = btn.closest('.d-flex.justify-content-between');
+    row.nextElementSibling.remove(); // 移除 <hr>
+    row.remove();                    // 移除商品列
+
+    // 如果購物車已清空，顯示空購物車提示
+    if (nowshopping.length === 0) {
+      document.querySelector('#shopping-list').innerHTML = `
+        <div class="text-center text-sub py-5">
+          購物車目前是空的喔 🛒
+        </div>
+      `;
+    }
+
+    calculatePrice();
+  });
+});
+
 /* ── 手動輸入數量 ── */
 document.querySelectorAll('input[data-shoppingname]').forEach(input => {
   input.addEventListener('change', () => {
     const title = input.dataset.shoppingname;
-    let   qty   = parseInt(input.value, 10);
+    let qty = parseInt(input.value, 10);
     if (isNaN(qty) || qty < 1) qty = 1;
     input.value = qty;
 
@@ -101,20 +130,20 @@ function calculatePrice() {
   const totalQty = nowshopping.reduce((sum, item) => sum + item.total, 0);
   const subtotal = nowshopping.reduce((sum, item) => sum + item.total * item.price, 0);
   const shipping = totalQty > 0 ? 60 : 0;   // ← 有商品才收運費
-  const total    = subtotal + shipping;
+  const total = subtotal + shipping;
 
   document.querySelector('#shopping-count').innerHTML = totalQty;
-  document.querySelector('#shopping-sum').innerHTML   = `$${subtotal.toLocaleString()}`;
-  document.querySelector('#shopping-tax').innerHTML   = `$${shipping.toLocaleString()}`;
+  document.querySelector('#shopping-sum').innerHTML = `$${subtotal.toLocaleString()}`;
+  document.querySelector('#shopping-tax').innerHTML = `$${shipping.toLocaleString()}`;
   document.querySelector('#shopping-total').innerHTML = `$${total.toLocaleString()}`;
 
   saveCart({
     items: nowshopping.map(i => ({
       title: i.title,
       price: Number(i.price),
-      qty:   Number(i.total),
-      img:   i.img,
-      tag:   i.tag
+      qty: Number(i.total),
+      img: i.img,
+      tag: i.tag
     })),
     shipping
   });
