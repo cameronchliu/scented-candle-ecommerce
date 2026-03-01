@@ -124,15 +124,31 @@
 }
 
 .input-circle {
-  width: 15px;
-  height: 15px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
+  border: 1px solid #C9C1B5;
+  transition: 0.2s ease;
 }
 
 input:checked+.input-circle {
-  border: 2px solid mediumaquamarine;
+  border: 2px solid #4A3F35;
+  box-shadow: 0 0 0 2px #F7F5F0, 0 0 0 3px #4A3F35;
+}
+
+/* 大圖區價格分隔線 */
+.featured-divider {
+  border: none;
+  border-top: 1px solid #C9C1B5;
+  margin: 8px 0;
+}
+
+/* 香調列表 */
+.scent-notes {
+  border-left: 3px solid #D6CEC3;
+  padding-left: 16px;
 }
 
 /* ── 商品卡 hover ── */
@@ -170,6 +186,6 @@ input:checked+.input-circle {
 }
 
 /* ── 區塊分隔線 ── */
-main section + section {
+main section+section {
   border-top: 1px solid #F0E6DA;
 }
