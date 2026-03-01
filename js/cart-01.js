@@ -150,3 +150,12 @@ function calculatePrice() {
 }
 /* ── 初始化計算 ── */
 calculatePrice();
+
+/* ── 下一步按鈕：購物車空時不允許前往 ── */
+document.querySelector('#next-btn').addEventListener('click', () => {
+  if (nowshopping.length === 0) {
+    alert('購物車沒有商品，請先加入商品再繼續。');
+    return;
+  }
+  window.location.href = './cart-02.html';
+});
