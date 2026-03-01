@@ -3,6 +3,36 @@
    依賴：cart.js（getCart / renderSummary）
 ============================================================ */
 
+/* ── 付款與運送方式對照表 ── */
+const paymentLabels = {
+  'payment-credit': '信用卡付款',
+  'payment-atm':    '網路 ATM',
+  'payment-cvs':    '超商代碼'
+};
+
+const shippingLabels = {
+  'shipping-home': '黑貓宅配',
+  'shipping-cvs':  '超商店到店'
+};
+
+/* ── 顯示付款與運送方式 ── */
+const summaryEl = document.querySelector('#order-summary');
+const cart      = getCart();
+
+if (cart.payment || cart.shipping_method) {
+  summaryEl.innerHTML = `
+    <div class="d-flex mb-2">
+      <div class="fw-semibold text-sub" style="width: 80px;">付款方式</div>
+      <div>${paymentLabels[cart.payment] ?? '未選擇'}</div>
+    </div>
+    <div class="d-flex mb-2">
+      <div class="fw-semibold text-sub" style="width: 80px;">運送方式</div>
+      <div>${shippingLabels[cart.shipping_method] ?? '未選擇'}</div>
+    </div>
+  `;
+}
+
+
 /* ── 台灣 22 縣市與完整鄉鎮市區資料 ── */
 const districts = {
   '台北市': [
