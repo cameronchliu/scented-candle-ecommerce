@@ -98,21 +98,16 @@ document.querySelectorAll('input[data-shoppingname]').forEach(input => {
 
 /* ── 計算並更新頁面金額，同步存回 cart ── */
 function calculatePrice() {
-  const taxEl    = document.querySelector('#shopping-tax');
-  const shipping = Number(taxEl.innerHTML.replace('$', '').replace(',', ''));
-
-  let totalQty = 0;
-  let subtotal = 0;
-  nowshopping.forEach(item => {
-    totalQty += item.total;
-    subtotal += Number(item.total) * Number(item.price);
-  });
+  const totalQty = nowshopping.reduce((sum, item) => sum + item.total, 0);
+  const subtotal = nowshopping.reduce((sum, item) => sum + item.total * item.price, 0);
+  const shipping = totalQty > 0 ? 60 : 0;   // ← 有商品才收運費
+  const total    = subtotal + shipping;
 
   document.querySelector('#shopping-count').innerHTML = totalQty;
   document.querySelector('#shopping-sum').innerHTML   = `$${subtotal.toLocaleString()}`;
-  document.querySelector('#shopping-total').innerHTML = `$${(subtotal + shipping).toLocaleString()}`;
+  document.querySelector('#shopping-tax').innerHTML   = `$${shipping.toLocaleString()}`;
+  document.querySelector('#shopping-total').innerHTML = `$${total.toLocaleString()}`;
 
-  // 更新後存回 cart
   saveCart({
     items: nowshopping.map(i => ({
       title: i.title,
@@ -124,6 +119,5 @@ function calculatePrice() {
     shipping
   });
 }
-
 /* ── 初始化計算 ── */
 calculatePrice();

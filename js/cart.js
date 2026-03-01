@@ -8,7 +8,7 @@
  * @returns {{ items: Array, shipping: number }}
  */
 function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || { items: [], shipping: 60 };
+  return JSON.parse(localStorage.getItem('cart')) || { items: [], shipping: 0 };
 }
 
 /**
