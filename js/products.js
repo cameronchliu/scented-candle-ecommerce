@@ -110,3 +110,31 @@ document.querySelectorAll('.shopping-btn').forEach(btn => {
     console.log('目前 cart：', cart);
   });
 });
+
+/* ── 大圖區：特色商品加入購物車 ── */
+const featuredBtn = document.querySelector('#featured-add-btn');
+if (featuredBtn) {
+  featuredBtn.addEventListener('click', () => {
+    const title    = featuredBtn.dataset.shoppingname;
+    const cart     = getCart();
+    const product  = shoppingList.find(item => item.title === title);
+    const existing = cart.items.find(item => item.title === title);
+
+    if (!product) return;
+
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.items.push({
+        title: product.title,
+        price: Number(product.price),
+        img:   product.img,
+        tag:   product.tag,
+        qty:   1
+      });
+    }
+
+    saveCart(cart);
+    console.log('目前 cart：', cart);
+  });
+}
