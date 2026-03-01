@@ -15,199 +15,13 @@
 
   <!-- 3. 全站共用樣式 -->
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/login.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/components.js"></script>
-
-  <style>
-    /* ============================================================
-       Sunday Quiet — Login 頁面樣式
-    ============================================================ */
-
-    body {
-      height: 100vh;
-      font-family: 'Noto Sans TC', sans-serif;
-      background-color: #F7F5F0;
-      color: #4A4A4A;
-    }
-
-    .row {
-      height: 100vh;
-    }
-
-    /* ── 色票 / Token ── */
-    .text-main {
-      color: #4A4A4A;
-    }
-
-    .text-sub {
-      color: #A09486;
-    }
-
-    .text-warm {
-      color: #4A3F35;
-    }
-
-    .bg-lightcream {
-      background-color: #FDFDFC;
-    }
-
-    .border-cream {
-      border-color: #C9C1B5 !important;
-    }
-
-    .border-soft {
-      border-color: #D6CEC3 !important;
-    }
-
-    .bg-warm {
-      background-color: #4A3F35;
-    }
-
-    .bg-btn {
-      background-color: #F2EEE9;
-    }
-
-    .bg-btn-hover:hover {
-      background-color: #E8E2D8 !important;
-    }
-
-    /* ── 字級 ── */
-    .text-xs {
-      font-size: 11px;
-    }
-
-    .text-sm {
-      font-size: 14px;
-    }
-
-    .text-md {
-      font-size: 16px;
-    }
-
-    /* ── 左側文案卡片 ── */
-    .logo {
-      min-width: 240px;
-      max-width: 360px;
-    }
-
-    .slogan-box {
-      max-width: 520px;
-      padding: 40px 32px;
-      border: 1px solid #D6CEC3;
-      background: rgba(253, 253, 252, 0.72);
-      backdrop-filter: blur(6px);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
-
-    /* ── 登入卡片 ── */
-    .login-card {
-      width: min(520px, 92%);
-      border-radius: 22px;
-      border: 1px solid #D6CEC3;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-      padding: 36px 26px;
-    }
-
-    /* ── 表單 ── */
-    .form-control {
-      border: 1px solid #C9C1B5;
-      background-color: #FDFDFC;
-      padding: 12px 14px;
-      border-radius: 12px;
-      color: #4A4A4A;
-    }
-
-    .form-control:focus {
-      border-color: #A09486;
-      box-shadow: 0 0 0 0.2rem rgba(160, 148, 134, 0.18);
-    }
-
-    /* ── 社群登入按鈕 ── */
-    .social-btn {
-      width: 46px;
-      height: 46px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 999px;
-      border: 1px solid #C9C1B5;
-      background-color: #F2EEE9;
-      color: #4A3F35;
-      transition: 0.2s ease;
-      text-decoration: none;
-    }
-
-    .social-btn:hover {
-      background-color: #E8E2D8;
-      color: #4A3F35;
-    }
-
-    /* ── 主要按鈕 ── */
-    .btn-sq {
-      border: 1px solid #C9C1B5;
-      background-color: #F2EEE9;
-      color: #4A3F35;
-      border-radius: 14px;
-      padding: 12px 14px;
-    }
-
-    .btn-sq:hover {
-      background-color: #E8E2D8 !important;
-      color: #4A3F35;
-    }
-
-    /* ── 文字連結 ── */
-    .link-sq {
-      color: #A09486;
-      text-decoration: none;
-    }
-
-    .link-sq:hover {
-      color: #4A3F35;
-      text-decoration: underline;
-    }
-
-    /* ── 底部社群圖示列 ── */
-    .footer-social-bar {
-      left: 50%;
-      bottom: 5%;
-      transform: translateX(-50%);
-      gap: 14px !important;
-    }
-
-    @media (min-width: 992px) {
-      .footer-social-bar {
-        left: 25%;
-        transform: translateX(-25%);
-      }
-    }
-
-    .footer-social {
-      width: 44px;
-      height: 44px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 999px;
-      border: 1px solid #D6CEC3;
-      background-color: rgba(253, 253, 252, 0.78);
-      backdrop-filter: blur(4px);
-      color: #4A3F35;
-      text-decoration: none;
-      transition: 0.2s ease;
-    }
-
-    .footer-social:hover {
-      background-color: #E8E2D8;
-      color: #4A3F35;
-    }
-  </style>
 </head>
 
 <body>
-  <section class="container-fluid position-relative">
+  <div id="nav-placeholder"></div>
+  <section class="container-fluid position-relative py-5">
     <div class="row">
 
       <!-- ── 左側文案（lg 以上才顯示） ── -->
@@ -222,11 +36,11 @@
       </div>
 
       <!-- ── 右側登入卡片 ── -->
-      <div class="col d-flex flex-column align-items-center justify-content-center px-2">
+      <div class="col d-flex flex-column align-items-center justify-content-center">
         <div class="login-card bg-lightcream">
 
           <div class="text-center">
-            <img src="./img/logo.png" class="logo w-50 mb-3" alt="Sunday Quiet Logo">
+            <img src="./img/logo.png" class="logo w-25 mb-3 rounded-2" alt="Sunday Quiet Logo">
             <div class="text-sub mb-3">Sign in to continue</div>
           </div>
 
@@ -269,9 +83,13 @@
     </div>
   </section>
 
+  <div id="footer-placeholder"></div>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
+  <script src="./js/components.js"></script>
 </body>
 
 </html>
