@@ -374,7 +374,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <span class="fs-3 text-main">$720.00</span>
               <div class="d-flex align-items-center">
-                <button type="button"  id="featured-add-btn" data-shoppingname="暮色花園 Twilight Bloom" class="px-3 mx-3 btn bg-btn bg-btn-hover text-warm fs-5">加入購物車</button>
+                <button type="button" id="featured-add-btn" data-shoppingname="暮色花園 Twilight Bloom"
+                  class="px-3 mx-3 btn bg-btn bg-btn-hover text-warm fs-5">加入購物車</button>
                 <i class="fs-3 bi bi-bag-heart"></i>
               </div>
             </div>
@@ -417,6 +418,20 @@
         </div>
       </div>
     </div>
+
+    <!-- Toast 提示 -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+      <div id="cart-toast" class="toast align-items-center text-white bg-warm border-0" role="alert">
+        <div class="d-flex">
+          <div class="toast-body">
+            <i class="bi bi-check-circle me-2"></i>
+            <span id="cart-toast-msg">已加入購物車</span>
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+      </div>
+    </div>
+    
   </main>
 
   <!-- ===================== FOOTER ===================== -->

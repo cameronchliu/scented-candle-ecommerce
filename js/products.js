@@ -107,7 +107,7 @@ document.querySelectorAll('.shopping-btn').forEach(btn => {
     }
 
     saveCart(cart);
-    console.log('目前 cart：', cart);
+    showToast(`${title} 已加入購物車`);  // ← 加這行
   });
 });
 
@@ -135,6 +135,13 @@ if (featuredBtn) {
     }
 
     saveCart(cart);
-    console.log('目前 cart：', cart);
+    showToast(`${title} 已加入購物車`);
   });
+}
+
+/* ── Toast 提示 ── */
+function showToast(message) {
+  const toastEl = document.querySelector('#cart-toast');
+  document.querySelector('#cart-toast-msg').textContent = message;
+  bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 2000 }).show();
 }
