@@ -168,3 +168,8 @@ input:checked+.input-circle {
   z-index: 9998;
   text-decoration: none;
 }
+
+/* ── 區塊分隔線 ── */
+main section + section {
+  border-top: 1px solid #F0E6DA;
+}
